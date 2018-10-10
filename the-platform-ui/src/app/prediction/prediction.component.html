@@ -1,0 +1,28 @@
+<section id="prediction">
+  <div class="container">
+    <div class="row">
+      <div class=" ">
+        <br>
+        <h1 class="text-center"><strong>Prediction</strong></h1>
+        <br>
+        <section class="leader-table">
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Pred</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pResult of predictionResult">
+              <td >{{pResult.name}}</td>
+              <td *ngIf="pResult.pred == 0">Diabetes Not Found</td>
+              <td *ngIf="pResult.pred != 0">Diabetes Found</td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

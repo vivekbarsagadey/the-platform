@@ -1,0 +1,5 @@
+build
+/dist
+the-platform-services.egg-info
+/.idea
+*.pyc

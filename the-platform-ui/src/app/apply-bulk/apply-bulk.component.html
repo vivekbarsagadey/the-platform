@@ -1,0 +1,38 @@
+        <br>
+        <h1 class="text-center"><strong>Check Diabetes</strong></h1>
+        <br>
+          <form  class="apply-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()"  [formGroup]="applyForm"   >
+            <div class="row">
+
+              <div class="col-md-6 ">
+                <div  class="form-group">
+                  <input type="text" formControlName="firstName" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" [(ngModel)]="user.firstName" name="firstName"  placeholder="First Name"/>
+                  <div  *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"  [(ngModel)]="user.lastName" name="lastName"  placeholder="Last Name"/>
+                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group form-group col-md-12">
+                <input type="text" formControlName="applyBulk"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.applyBulk.errors }" formControlName="applyBulk" [(ngModel)]="user.applyBulk"   placeholder="applyBulk">
+                <div *ngIf="submitted && f.applyBulk.errors" class="invalid-feedback">
+                  <div *ngIf="f.applyBulk.errors.required">This field is required</div>
+                </div>
+              </div>
+            <br>
+            <div  class="col-md-12">
+              <div class="form-group text-center"> <button class="btn btn-primary btn-round" type="submit"  (click)="openClickSubmit()">SUBMIT</button></div>
+            </div>
+            </div>
+          </form>
+
+

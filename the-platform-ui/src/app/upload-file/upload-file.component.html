@@ -1,0 +1,14 @@
+<br>
+<h1 class="text-center"><strong>File Upload</strong></h1>
+<br>
+<form>
+  <div class="row">
+      <div  class="col-md-9  form-group">
+        <input type="file" name="file" class="form-control" accept="application/pdf" multiple (change)="selectFile($event)">
+      </div>
+      <div class=" col-md-3  form-group">
+        <button type="button" class="btn btn-primary btn-round" (click)="upload()">UPLOAD</button>
+      </div>
+  </div>
+</form>
+
