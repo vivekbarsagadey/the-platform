@@ -21,7 +21,7 @@ class PatientFeatures:
     def __str__(self):
         return str(self.__dict__)
 
-    def save(self):
+    def saveFeatures(self):
         user_String = json.dumps(self.__dict__)
         print("User json is ")
         print(user_String)

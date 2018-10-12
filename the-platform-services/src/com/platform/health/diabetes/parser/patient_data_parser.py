@@ -33,7 +33,7 @@ class PatientDataParser():
                 print("Storing the Features in Database")
                 patientFeatures = PatientFeatures(org=row)
                 #print("age >>> ",patientFeatures.age)
-                patientFeatures.save();
+                patientFeatures.saveFeatures()
                 print("Features saved to database sucessfully.")
             name.close()
             os.remove(csvfile)

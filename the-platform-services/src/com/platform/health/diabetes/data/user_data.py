@@ -2,6 +2,8 @@ import os
 from flask import Flask, request
 from flask_restful import Resource, reqparse
 from com.platform.health.diabetes.services.file_handler import  FileHandler
+from com.platform.health.diabetes.parser import patient_data_parser
+
 
 class UserFileuploadscontroller(Resource):
     def get(self):
@@ -9,5 +11,6 @@ class UserFileuploadscontroller(Resource):
 
     def post(self):
         print("UserFileuploadscontroller post called")
-        FileHandler().save(request)
+        FileHandler().saveFile(request)
+        patient_data_parser.PatientDataParser().getPatientListFromFile()
         return "file successfully saved"

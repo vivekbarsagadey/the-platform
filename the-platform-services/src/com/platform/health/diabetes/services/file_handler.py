@@ -23,7 +23,7 @@ class FileHandler:
     def __init__(self):
         print("File handler init")
 
-    def save(self, request):
+    def saveFile(self, request):
         print("File uploading is started")
         if 'file' not in request.files:
             print("No file found")

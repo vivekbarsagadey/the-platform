@@ -22,13 +22,21 @@ class User:
     def __str__(self):
         return str(self.__dict__)
 
+    def details(self):
+        sample_String = {'pregnancy':self.pregnancy,'glucose':self.glucose,'bloodpressure':self.bloodpressure,
+                         'skinThickness':self.skinThickness,'insulin':self.insulin,'bmi':self.bmi,
+                         'diabetesPedigreeFunction':self.diabetesPedigreeFunction,'age':self.age}
+        sample_String.update(patientObjectId = self.objectId)
+
+        DBHandler().getPatientMedicalRecord().insert_one(sample_String)
+
     def save(self):
-        user_String = json.dumps(self.__dict__)
-        print("User json is ")
-        print(user_String)
-        DBHandler().getUserDataSource().insert_one(json.loads(user_String))
 
-
+        user_String = {'firstName': self.firstName, 'lastName': self.lastName}
+        print("Sampling_String:",user_String)
+        value = DBHandler().getUserDataSource().insert_one(user_String)
+        self.objectId= value.inserted_id
+        User.details(self)
 
     def getFrame(self ):
 
