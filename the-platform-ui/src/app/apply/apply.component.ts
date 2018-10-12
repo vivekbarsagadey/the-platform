@@ -57,7 +57,7 @@ export class ApplyComponent implements OnInit {
   applyForm() {
     this.checkDiabetes = false;
     this.prediction = true;
-    this.onSubmit();
+    // this.onSubmit();
     // this.openClickSubmit();
   }
   // openClickSubmit() {
