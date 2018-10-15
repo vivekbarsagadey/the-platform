@@ -3,6 +3,7 @@ import re
 import os
 import glob
 from com.platform.health.diabetes.parser.patient_features import PatientFeatures
+from com.platform.health.diabetes.model.models import AllModels
 
 UPLOAD_FOLDER = os.path.abspath(os.path.dirname(__name__))
 UPLOAD_FOLDER_PATH="/com/platform/health/diabetes/data/upload/"
@@ -32,9 +33,12 @@ class PatientDataParser():
                 #print("new row",row)
                 print("Storing the Features in Database")
                 patientFeatures = PatientFeatures(org=row)
+                userDataFrame = patientFeatures.getFrame()
                 #print("age >>> ",patientFeatures.age)
                 patientFeatures.saveFeatures()
                 print("Features saved to database sucessfully.")
+                AllModels().predict(userDataFrame)
+                print("the prediction method is called.")
             name.close()
             os.remove(csvfile)
             print("The locally stored file is deleted")

@@ -21,3 +21,6 @@ class DBHandler:
 
     def getPatientMedicalRecord(self):
         return dbs.medicalRecord
+
+    def storeRecordResult(self):
+        return dbs.Results
