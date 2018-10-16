@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+  the-platform-services:
+    build: ./the-platform-services
+    ports:
+      - 5000:5000
+    restart: always
+  the-platform-ui:
+    build: ./the-platform-ui
+    ports:
+      - 4200:4200
+    restart: always
+    links:
+      - mongo
+  mongo:
+   container_name: mongo
+   image: mongo
+   ports:
+      - '27017:27017'
+
+   
