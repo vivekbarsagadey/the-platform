@@ -39,7 +39,7 @@ export class ApplyComponent implements OnInit {
       return;
     }
     // console.log(JSON.stringify(this.registerForm.value));
-    fetch('http://localhost:5000/api/diabetes/all', {
+    fetch('http://localhost.:5000/api/diabetes/all', {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(this.registerForm.value), // data can be `string` or {object}!
       headers: {

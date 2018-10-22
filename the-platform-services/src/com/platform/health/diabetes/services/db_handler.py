@@ -24,3 +24,6 @@ class DBHandler:
 
     def storeRecordResult(self):
         return dbs.Results
+
+    def getUserInput(self):
+        return dbs.userInput

@@ -1,8 +1,10 @@
-from flask import Flask, request
-from flask_restful import Resource, reqparse
-from com.platform.health.diabetes.model.models import AllModels
+from flask import request
+from flask_restful import Resource
+
+from com.platform.health.diabetes.domain.registration import Registration
 from com.platform.health.diabetes.domain.user import User
 from com.platform.health.diabetes.model.k_nearest_neighbors import KNearestNeighborsModel
+from com.platform.health.diabetes.model.models import AllModels
 from com.platform.health.diabetes.services.data_handler import DiabetesDataSet
 
 
@@ -71,3 +73,21 @@ class DiabetesDataSetController(Resource):
 class DiabetesModelFeaturesController(Resource):
     def get(self):
         print("Features set is called")
+
+class RegistrationController(Resource):
+
+    def get(self):
+        return  "Registration controller is called"
+
+
+    def post(self):
+        json_data = request.get_json(force=True)
+        registration=Registration(json_data)
+        print("registration detail",registration)
+        registration.details()
+
+
+class UserTypeController(Resource):
+
+    def get(self):
+        return  "User type controller called"
