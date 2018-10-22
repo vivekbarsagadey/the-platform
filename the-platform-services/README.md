@@ -1,4 +1,4 @@
-# Medicon Package
+# Medicom Package
 
 This is a simple example package. You can use
 [Github-medicom-services](https://github.com/vivekbarsagadey/medicom-services.git)

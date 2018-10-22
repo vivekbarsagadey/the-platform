@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request
-from flask_restful import Resource, reqparse
+from flask_restplus import Resource, reqparse
 from com.platform.health.diabetes.services.file_handler import  FileHandler
 from com.platform.health.diabetes.parser import patient_data_parser
 

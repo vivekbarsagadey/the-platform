@@ -5,10 +5,10 @@ class Registration:
 
     def __init__(self, org={}):
         self.usertype=org['usertype']
-        self.FirstName=org['FirstName']
-        self.LastName = org['LastName']
-        self.Email = org['Email']
-        self.Date_of_Birth = org['Date_of_Birth']
+        self.fname=org['fname']
+        self.lname = org['lname']
+        self.email = org['email']
+        self.password = org['password']
 
     def __str__(self):
         return str(self.__dict__)

@@ -1,5 +1,5 @@
 from flask import request
-from flask_restful import Resource
+from flask_restplus import Resource
 
 from com.platform.health.diabetes.domain.registration import Registration
 from com.platform.health.diabetes.domain.user import User
@@ -69,11 +69,6 @@ class DiabetesDataSetController(Resource):
         else:
             return DiabetesDataSet().getData()
 
-
-class DiabetesModelFeaturesController(Resource):
-    def get(self):
-        print("Features set is called")
-
 class RegistrationController(Resource):
 
     def get(self):
@@ -87,7 +82,4 @@ class RegistrationController(Resource):
         registration.details()
 
 
-class UserTypeController(Resource):
 
-    def get(self):
-        return  "User type controller called"
