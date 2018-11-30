@@ -1,0 +1,42 @@
+.card {
+  border: 0;
+  border-radius: 1.25em;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+}
+.platform-unique{
+  background:url('../../../assets/The-Platform-features-background.jpg') no-repeat center;
+  height: 100vh;
+}
+.platform-second{
+  background:url('../../../assets/The-Platform-use-cases-background.jpg') no-repeat center;
+  height: 100vh;
+}
+.image-human1{
+  margin-top: 30%;
+}
+.image-human{
+  margin-top: 20%;
+}
+.saving-lives{
+  margin-top: 13% !important;
+}
+h4 {
+  margin-top: 0 !important;
+}
+h1{
+  color: #6a11cb;
+  font-weight: 700;
+}
+h2{
+  color: #6a11cb;
+  font-weight: 800;
+}
+
+.heading-font{
+  color: #6a11cb;
+  font-weight: 600;
+}
