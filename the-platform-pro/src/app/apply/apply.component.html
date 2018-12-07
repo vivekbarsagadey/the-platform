@@ -1,12 +1,12 @@
 <br>
 <h1 class="text-center"><strong>Check Diabetes</strong></h1>
 <br>
-<form [formGroup]="registerForm" class="apply-form"  name="applicationForm">
+<form [formGroup]="registerForm" class="apply-form" (ngSubmit)="onSubmit(registerForm.value)" name="applicationForm">
   <div class="row">
 
     <div class="col-md-6 col-md-6">
       <div  class="form-group">
-        <input type="text" formControlName="firstName" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" [(ngModel)]="user.firstName" name="firstName"  placeholder="First Name"/>
+        <input type="text" formControlName="firstName" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"  name="firstName"  placeholder="First Name"/>
         <div  *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
           <div *ngIf="f.firstName.errors.required">First Name is required</div>
         </div>
@@ -15,7 +15,7 @@
 
     <div class="col-md-6 col-md-6">
       <div class="form-group">
-        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"  [(ngModel)]="user.lastName" name="lastName"  placeholder="Last Name"/>
+        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"  name="lastName"  placeholder="Last Name"/>
         <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
           <div *ngIf="f.lastName.errors.required">Last Name is required</div>
         </div>
@@ -24,7 +24,7 @@
 
     <div class="col-md-6 col-md-6">
       <div class="form-group">
-        <input type="number" min="1"  formControlName="pregnancy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pregnancy.errors }" [(ngModel)]="user.pregnancy"  name="pregnancy" placeholder="Pregnancy"/>
+        <input type="number" min="1"  formControlName="pregnancy" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pregnancy.errors }"   name="pregnancy" placeholder="Pregnancy"/>
         <div *ngIf="submitted && f.pregnancy.errors" class="invalid-feedback">
           <div *ngIf="f.pregnancy.errors.required">It is required field</div>
         </div>
@@ -33,7 +33,7 @@
 
     <div class="col-md-6 col-md-6">
       <div class="form-group">
-        <input type="number" min="1"  formControlName="glucose" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.glucose.errors }" [(ngModel)]="user.glucose"  name="glucose" placeholder="Glucose"/>
+        <input type="number" min="1"  formControlName="glucose" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.glucose.errors }"  name="glucose" placeholder="Glucose"/>
         <div *ngIf="submitted && f.glucose.errors" class="invalid-feedback">
           <div *ngIf="f.glucose.errors.required">It is required field</div>
         </div>
@@ -42,7 +42,7 @@
 
     <div class="col-md-6 col-md-6">
       <div class="form-group">
-        <input type="number" min="1"  formControlName="bloodpressure" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bloodpressure.errors }" [(ngModel)]="user.bloodpressure" name="bloodpressure" placeholder="Blood Pressure"/>
+        <input type="number" min="1"  formControlName="bloodpressure" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bloodpressure.errors }" name="bloodpressure" placeholder="Blood Pressure"/>
         <div *ngIf="submitted && f.bloodpressure.errors" class="invalid-feedback">
           <div *ngIf="f.bloodpressure.errors.required">It is required field</div>
         </div>
@@ -51,7 +51,7 @@
 
     <div class="col-md-6 col-md-6">
       <div class="form-group">
-        <input type="number" min="1"  formControlName="skinThickness" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.skinThickness.errors }" [(ngModel)]="user.skinThickness" name="skinThickness" placeholder="Skin Thickness"/>
+        <input type="number" min="1"  formControlName="skinThickness" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.skinThickness.errors }" name="skinThickness" placeholder="Skin Thickness"/>
         <div *ngIf="submitted && f.skinThickness.errors" class="invalid-feedback">
           <div *ngIf="f.skinThickness.errors.required">It is required field</div>
         </div>
@@ -60,7 +60,7 @@
 
     <div class="col-md-6 col-md-6">
       <div class="form-group">
-        <input type="number" min="1"  formControlName="insulin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.insulin.errors }" [(ngModel)]="user.insulin" name="insulin" placeholder="Insulin"/>
+        <input type="number" min="1"  formControlName="insulin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.insulin.errors }" name="insulin" placeholder="Insulin"/>
         <div *ngIf="submitted && f.insulin.errors" class="invalid-feedback">
           <div *ngIf="f.insulin.errors.required">It is required field</div>
         </div>
@@ -69,7 +69,7 @@
 
     <div class="col-md-6 col-md-6">
       <div class="form-group">
-        <input type="number" min="1"  formControlName="bmi" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bmi.errors }" [(ngModel)]="user.bmi" name="bmi" placeholder="BMI"/>
+        <input type="number" min="1"  formControlName="bmi" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bmi.errors }" name="bmi" placeholder="BMI"/>
         <div *ngIf="submitted && f.bmi.errors" class="invalid-feedback">
           <div *ngIf="f.bmi.errors.required">It is required field</div>
         </div>
@@ -77,7 +77,7 @@
     </div>
     <div class="col-md-6 col-md-6">
       <div class="form-group">
-        <input type="number" min="1"  formControlName="diabetesPedigreeFunction" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.diabetesPedigreeFunction.errors }" [(ngModel)]="user.diabetesPedigreeFunction" name="diabetesPedigreeFunction" placeholder="Diabetes Pedigree Function"/>
+        <input type="number" min="1"  formControlName="diabetesPedigreeFunction" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.diabetesPedigreeFunction.errors }" name="diabetesPedigreeFunction" placeholder="Diabetes Pedigree Function"/>
         <div *ngIf="submitted && f.diabetesPedigreeFunction.errors" class="invalid-feedback">
           <div *ngIf="f.diabetesPedigreeFunction.errors.required">It is required field</div>
         </div>
@@ -85,7 +85,7 @@
     </div>
     <div class="col-md-6 col-md-6">
       <div class="form-group">
-        <input type="number" min="1" formControlName="age" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.age.errors }" [(ngModel)]="user.age" name="age" placeholder="Age"/>
+        <input type="number" min="1" formControlName="age" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.age.errors }" name="age" placeholder="Age"/>
         <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
           <div *ngIf="f.age.errors.required">It is required field</div>
         </div>
@@ -103,7 +103,7 @@
   </div>
 
   <div class="text-center">
-    <div class="form-group"> <button class="btn btn-platform btn-round"  (click)="applyForm()">SUBMIT</button></div>
+    <div class="form-group"> <button class="btn btn-platform btn-round" >SUBMIT</button></div>
   </div>
 
 </form>

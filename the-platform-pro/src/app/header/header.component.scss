@@ -2,3 +2,29 @@
 .heading-login{
   font-weight: 700;
 }
+.menu-header{
+  padding: 30px 0;
+  height: 92px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+.active-menu{
+  color: #6a11cb;
+}
+
+//.viewRegistration {
+//  .modal-content{
+//    width: 100vw;
+//    height: 100vh;
+//  }
+//
+//  .modal-dialog {
+//    margin: 0px !important;
+//    padding: 0px !important;
+//
+//  }
+//}

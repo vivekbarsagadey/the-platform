@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import {FormControl, FormsModule} from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-apply',
@@ -20,16 +20,28 @@ export class ApplyComponent implements OnInit {
     this.prediction = false;
   }
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      pregnancy: ['', Validators.required], glucose: ['', Validators.required],
-      bloodpressure: ['', Validators.required],
-      skinThickness: ['', Validators.required],
-      insulin: ['', Validators.required],
-      bmi: ['', Validators.required],
-      diabetesPedigreeFunction: ['', Validators.required],
-      age: ['', Validators.required]
+    // this.registerForm = this.formBuilder.group({
+    //   firstName: ['', Validators.required],
+    //   lastName: ['', Validators.required],
+    //   pregnancy: ['', Validators.required], glucose: ['', Validators.required],
+    //   bloodpressure: ['', Validators.required],
+    //   skinThickness: ['', Validators.required],
+    //   insulin: ['', Validators.required],
+    //   bmi: ['', Validators.required],
+    //   diabetesPedigreeFunction: ['', Validators.required],
+    //   age: ['', Validators.required]
+    // });
+    this.registerForm = new FormGroup({
+      firstName: new FormControl('', [Validators.required]),
+      lastName:  new FormControl('', [Validators.required]),
+      pregnancy:  new FormControl('', [Validators.required]),
+      glucose:  new FormControl('', [Validators.required]),
+      bloodpressure:  new FormControl('', [Validators.required]),
+      skinThickness:  new FormControl('', [Validators.required]),
+      insulin:  new FormControl('', [Validators.required]),
+      bmi: new FormControl('', [Validators.required]),
+      diabetesPedigreeFunction:  new FormControl('', [Validators.required]),
+      age: new FormControl('', [Validators.required])
     });
   }
   get f() { return this.registerForm.controls; }

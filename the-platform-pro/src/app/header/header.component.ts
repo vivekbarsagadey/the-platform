@@ -13,11 +13,20 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-  onClickViewProduct(content) {
+  onClickViewLogin(content) {
     // this.productService.getMenuItem(id).then(res => {
     //   this.viewData = res;
     // });
     this.modalService.open(content, {size: 'sm', ariaLabelledBy: 'view-product'}).result.then((result) => {
+    }, (reason) => {
+      // this.viewData = '';
+    });
+  }
+  onClickViewRegistration(content) {
+    // this.productService.getMenuItem(id).then(res => {
+    //   this.viewData = res;
+    // });
+    this.modalService.open(content, { size: 'sm', backdrop: 'static' , ariaLabelledBy: 'view-product'}).result.then((result) => {
     }, (reason) => {
       // this.viewData = '';
     });

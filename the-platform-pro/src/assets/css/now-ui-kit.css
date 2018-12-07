@@ -4961,12 +4961,12 @@ small {
 }
 
 a {
-    color: #f96332;
+    color: black;
 }
 
 a:hover,
 a:focus {
-    color: #f96332;
+    color: #6a11cb;
 }
 
 h1,

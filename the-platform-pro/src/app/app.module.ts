@@ -15,12 +15,16 @@ import { ApplyComponent } from './apply/apply.component';
 import { ApplyBulkComponent } from './apply-bulk/apply-bulk.component';
 import { ApplyRouteComponent } from './apply-route/apply-route.component';
 import { PredictionComponent } from './prediction/prediction.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 const appRoutes: Routes = [
-  {path: 'home', component: HomeComponent,
-  children: [{path: 'home_page', component: HomePageComponent},
+  {path: 'platform', component: HomeComponent,
+  children: [
+    {path: 'home_page', component: HomePageComponent},
     {path: 'about', component: AboutComponent},
+    {path: 'contact', component: ContactComponent},
     {path: '', redirectTo: 'home_page', pathMatch: 'full'}]
   },
   {path: 'apply', component: ApplyRouteComponent,
@@ -28,13 +32,13 @@ const appRoutes: Routes = [
       {path: 'check-diabetes', component: ApplyComponent},
       {path: 'apply-bulk', component: ApplyBulkComponent},
       {path: 'prediction', component: PredictionComponent},
-      // {path: 'upload-file', component: UploadFileComponent},
+      {path: 'upload-file', component: UploadFileComponent},
       {path: '', redirectTo: 'check-diabetes',
         pathMatch: 'full'
       }
     ]},
   {path: 'register', component: RegistrationComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'}
+  {path: '', redirectTo: 'home_page', pathMatch: 'full'}
 ];
 
 
@@ -51,6 +55,8 @@ const appRoutes: Routes = [
     ApplyBulkComponent,
     ApplyRouteComponent,
     PredictionComponent,
+    UploadFileComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
