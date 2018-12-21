@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 import {FormControl, FormsModule} from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
@@ -15,7 +16,7 @@ export class ApplyComponent implements OnInit {
   sendToServer: any;
   predictionResult: any;
   user: any = {};
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private location: Location, private formBuilder: FormBuilder, private router: Router) {
     this.checkDiabetes = true;
     this.prediction = false;
   }
@@ -51,7 +52,7 @@ export class ApplyComponent implements OnInit {
       return;
     }
     // console.log(JSON.stringify(this.registerForm.value));
-    fetch('http://192.168.100.15:5000/api/diabetes/all', {
+    fetch('http://192.168.1.126:5000/api/diabetes/all', {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(this.registerForm.value), // data can be `string` or {object}!
       headers: {
@@ -96,4 +97,9 @@ export class ApplyComponent implements OnInit {
   //      .catch(error => console.error('Error:', error))
   //      .then(response => console.log('Success:', response));
   //  }
+  closeApplicationPage()
+  {
+    this.location.back();
+    //  this.router.navigate(['home']);
+  }
 }

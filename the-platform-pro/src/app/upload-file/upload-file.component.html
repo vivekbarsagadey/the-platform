@@ -3,8 +3,11 @@
 <br>
 <form>
   <div class="row">
-    <div  class="col-md-9 mt-2">
+    <div  class="col-md-6 mt-2">
       <input type="file" name="file" class="form-control" accept="application/pdf" multiple (change)="selectFile($event)">
+    </div>
+    <div class=" col-md-3 ">
+      <button type="button" class="btn btn-danger btn-round" (click)="closeApplicationPage()" >Back</button>
     </div>
     <div class=" col-md-3 ">
       <button type="button" class="btn btn-platform btn-round" (click)="upload()">UPLOAD</button>

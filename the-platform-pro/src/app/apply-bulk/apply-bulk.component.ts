@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -16,7 +17,7 @@ export class ApplyBulkComponent implements OnInit {
   submitted = false;
   predictionResult: any;
   user: any = {};
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private location: Location, private formBuilder: FormBuilder, private router: Router) {
     this.checkDiabetes = true;
     this.prediction = false;
   }
@@ -54,7 +55,7 @@ export class ApplyBulkComponent implements OnInit {
       age : Number(data[7])
     };
     console.log('this.sendToServer', this.sendToServer);
-    fetch('http://192.168.100.15:5000/api/diabetes/all', {
+    fetch('http://192.168.1.126:5000/api/diabetes/all', {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(this.sendToServer), // data can be `string` or {object}!
       headers: {
@@ -69,5 +70,10 @@ export class ApplyBulkComponent implements OnInit {
         console.log('Success:', response);
       });
     this.applyForm();
+  }
+  closeApplicationPage()
+  {
+    this.location.back();
+    //  this.router.navigate(['home']);
   }
 }

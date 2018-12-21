@@ -28,9 +28,20 @@
         <div *ngIf="f.applyBulk.errors.required">This field is required</div>
       </div>
     </div>
-    <br>
-    <div  class="col-md-12">
-      <div class="form-group text-center"> <button class="btn btn-platform btn-round" type="submit"  (click)="openClickSubmit()">SUBMIT</button></div>
+
+    <!--<div  class="col-md-12">-->
+      <!--<div class="form-group text-center"> <button class="btn btn-platform btn-round" type="submit"  (click)="openClickSubmit()">SUBMIT</button></div>-->
+    <!--</div>-->
+
+  </div>
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
+    </div>
+    <div class="col-lg-3 col-md-3">
+      <button type="button" class="btn btn-danger btn-round" (click)="closeApplicationPage()" >Back</button>
+    </div>
+    <div class="col-lg-3 col-md-3">
+      <button type="submit" class="btn btn-fill btn-platform btn-round">Submit</button>
     </div>
   </div>
 </form>

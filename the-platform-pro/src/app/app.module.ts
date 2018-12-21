@@ -25,7 +25,16 @@ const appRoutes: Routes = [
     {path: 'home_page', component: HomePageComponent},
     {path: 'about', component: AboutComponent},
     {path: 'contact', component: ContactComponent},
-    {path: '', redirectTo: 'home_page', pathMatch: 'full'}]
+    // {path: 'apply', component: ApplyRouteComponent,
+    //   children: [
+    //     {path: 'check-diabetes', component: ApplyComponent},
+    //     {path: 'apply-bulk', component: ApplyBulkComponent},
+    //     {path: 'prediction', component: PredictionComponent},
+    //     {path: 'upload-file', component: UploadFileComponent},
+    //     {path: '', redirectTo: 'check-diabetes', pathMatch: 'full'},
+    //   ]},
+    {path: '', redirectTo: 'platform/home_page', pathMatch: 'full'}
+  ]
   },
   {path: 'apply', component: ApplyRouteComponent,
     children: [
@@ -33,12 +42,10 @@ const appRoutes: Routes = [
       {path: 'apply-bulk', component: ApplyBulkComponent},
       {path: 'prediction', component: PredictionComponent},
       {path: 'upload-file', component: UploadFileComponent},
-      {path: '', redirectTo: 'check-diabetes',
-        pathMatch: 'full'
-      }
+      {path: '', redirectTo: 'check-diabetes', pathMatch: 'full'}
     ]},
   {path: 'register', component: RegistrationComponent},
-  {path: '', redirectTo: 'home_page', pathMatch: 'full'}
+  {path: '', redirectTo: 'platform/home_page', pathMatch: 'full'}
 ];
 
 

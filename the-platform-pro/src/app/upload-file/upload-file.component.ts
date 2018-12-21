@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Location} from '@angular/common';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class UploadFileComponent  {
   selectedFile: File = null;
-  constructor() { }
+  constructor(private location: Location) { }
   selectFile(event) {
     this.selectedFile = <File>event.target.files[0];
   }
@@ -16,7 +17,7 @@ export class UploadFileComponent  {
   upload() {
     const fiormData = new FormData();
     fiormData.append('file', this.selectedFile);
-    fetch('http://192.168.100.15:5000/api/diabetes/dataset/upload', {
+    fetch('http://192.168.1.126:5000/api/diabetes/dataset/upload', {
       method: 'post',
       headers: {
         // 'Accept': 'application/pdf',
@@ -29,5 +30,10 @@ export class UploadFileComponent  {
     ).catch(
       error => console.log(error) // Handle the error response object
     );
+  }
+  closeApplicationPage()
+  {
+    this.location.back();
+    //  this.router.navigate(['home']);
   }
 }
