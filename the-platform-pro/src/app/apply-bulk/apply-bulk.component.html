@@ -4,7 +4,7 @@
 <form  class="apply-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()"  [formGroup]="applyForm"   >
   <div class="row">
 
-    <div class="col-md-6 ">
+    <div class="col-md-6">
       <div  class="form-group">
         <input type="text" formControlName="firstName" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" [(ngModel)]="user.firstName" name="firstName"  placeholder="First Name"/>
         <div  *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
@@ -41,7 +41,7 @@
       <button type="button" class="btn btn-default btn-round" (click)="closeApplicationPage()" >Back</button>
     </div>
     <div class="col-lg-3 col-md-3">
-      <button type="submit" class="btn btn-fill btn-platform btn-round">Submit</button>
+      <button type="submit" class="btn btn-fill btn-platform btn-round" (click)="openClickSubmit()">Submit</button>
     </div>
   </div>
 </form>
