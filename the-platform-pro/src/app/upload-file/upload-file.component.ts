@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Location} from '@angular/common';
+import {PlatformApiService} from '../service/platform-api.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import {Location} from '@angular/common';
 })
 export class UploadFileComponent  {
   selectedFile: File = null;
-  constructor(private location: Location) { }
+  constructor(private location: Location, private apiService: PlatformApiService) { }
   selectFile(event) {
     this.selectedFile = <File>event.target.files[0];
   }
@@ -17,15 +18,7 @@ export class UploadFileComponent  {
   upload() {
     const fiormData = new FormData();
     fiormData.append('file', this.selectedFile);
-    fetch('http://192.168.1.126:5000/api/diabetes/dataset/upload', {
-      method: 'post',
-      headers: {
-        // 'Accept': 'application/pdf',
-        // 'Content-Type': 'multipart/form-data',
-        // 'Access-Control-Allow-Origin': 'null'
-      },
-      body : fiormData,
-    }).then(
+    this.apiService.uploadData(fiormData).then(
       success => console.log(success) // Handle the success response object
     ).catch(
       error => console.log(error) // Handle the error response object

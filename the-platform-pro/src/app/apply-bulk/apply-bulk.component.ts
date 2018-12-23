@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {PlatformApiService} from '../service/platform-api.service';
+
 
 @Component({
   selector: 'app-apply-bulk',
@@ -17,7 +19,7 @@ export class ApplyBulkComponent implements OnInit {
   submitted = false;
   predictionResult: any;
   user: any = {};
-  constructor(private location: Location, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private location: Location, private formBuilder: FormBuilder, private router: Router, private apiService: PlatformApiService) {
     this.checkDiabetes = true;
     this.prediction = false;
   }
@@ -55,14 +57,7 @@ export class ApplyBulkComponent implements OnInit {
       age : Number(data[7])
     };
     console.log('this.sendToServer', this.sendToServer);
-    fetch('http://192.168.1.126:5000/api/diabetes/all', {
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify(this.sendToServer), // data can be `string` or {object}!
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-      }
-    }).then(res => res.json())
+    this.apiService.uploadAllData(JSON.stringify(this.sendToServer)).then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => {
         this.predictionResult = JSON.stringify(response);

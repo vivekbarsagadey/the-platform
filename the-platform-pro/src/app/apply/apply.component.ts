@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormControl, FormsModule} from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {PlatformApiService} from '../service/platform-api.service';
+
 @Component({
   selector: 'app-apply',
   templateUrl: './apply.component.html',
@@ -16,7 +18,7 @@ export class ApplyComponent implements OnInit {
   sendToServer: any;
   predictionResult: any;
   user: any = {};
-  constructor(private location: Location, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private location: Location, private formBuilder: FormBuilder, private router: Router, private apiService: PlatformApiService) {
     this.checkDiabetes = true;
     this.prediction = false;
   }
@@ -52,14 +54,8 @@ export class ApplyComponent implements OnInit {
       return;
     }
     // console.log(JSON.stringify(this.registerForm.value));
-    fetch('http://192.168.1.126:5000/api/diabetes/all', {
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify(this.registerForm.value), // data can be `string` or {object}!
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
-      }
-    }).then(res => res.json())
+    this.apiService.uploadAllData(JSON.stringify(this.registerForm.value))
+      .then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => {
         this.predictionResult = JSON.stringify(response);

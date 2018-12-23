@@ -17,6 +17,7 @@ import { ApplyRouteComponent } from './apply-route/apply-route.component';
 import { PredictionComponent } from './prediction/prediction.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { ContactComponent } from './contact/contact.component';
+import {PlatformApiService} from './service/platform-api.service';
 
 
 const appRoutes: Routes = [
@@ -72,7 +73,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    PlatformApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
