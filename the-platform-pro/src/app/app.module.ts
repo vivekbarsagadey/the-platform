@@ -18,22 +18,23 @@ import { PredictionComponent } from './prediction/prediction.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { ContactComponent } from './contact/contact.component';
 import {PlatformApiService} from './service/platform-api.service';
+import { WhyChooseUsComponent } from './why-choose-us/why-choose-us.component';
+import { FaqsComponent } from './faqs/faqs.component';
+import { BlogComponent } from './blog/blog.component';
+import { FindDoctorComponent } from './find-doctor/find-doctor.component';
+import { FindHospitalComponent } from './find-hospital/find-hospital.component';
 
 
 const appRoutes: Routes = [
   {path: 'platform', component: HomeComponent,
   children: [
     {path: 'home_page', component: HomePageComponent},
-    {path: 'about', component: AboutComponent},
+    {path: 'whychoosus', component: WhyChooseUsComponent},
+    {path: 'faqs', component: FaqsComponent},
+    {path: 'blog', component: BlogComponent},
     {path: 'contact', component: ContactComponent},
-    // {path: 'apply', component: ApplyRouteComponent,
-    //   children: [
-    //     {path: 'check-diabetes', component: ApplyComponent},
-    //     {path: 'apply-bulk', component: ApplyBulkComponent},
-    //     {path: 'prediction', component: PredictionComponent},
-    //     {path: 'upload-file', component: UploadFileComponent},
-    //     {path: '', redirectTo: 'check-diabetes', pathMatch: 'full'},
-    //   ]},
+    {path: 'findDoctor', component: FindDoctorComponent },
+    {path: 'findHospital', component: FindHospitalComponent},
     {path: '', redirectTo: 'platform/home_page', pathMatch: 'full'}
   ]
   },
@@ -65,6 +66,11 @@ const appRoutes: Routes = [
     PredictionComponent,
     UploadFileComponent,
     ContactComponent,
+    WhyChooseUsComponent,
+    FaqsComponent,
+    BlogComponent,
+    FindDoctorComponent,
+    FindHospitalComponent,
   ],
   imports: [
     BrowserModule,

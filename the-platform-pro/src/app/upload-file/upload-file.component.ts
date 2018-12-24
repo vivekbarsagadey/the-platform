@@ -19,7 +19,12 @@ export class UploadFileComponent  {
     const fiormData = new FormData();
     fiormData.append('file', this.selectedFile);
     this.apiService.uploadData(fiormData).then(
-      success => console.log(success) // Handle the success response object
+      success => {
+        if(success.status === 200){
+          alert('File Uploaded Successfuly');
+        }
+      }
+      // Handle the success response object
     ).catch(
       error => console.log(error) // Handle the error response object
     );
