@@ -82,4 +82,8 @@ class RegistrationController(Resource):
         registration.details()
 
 
+class DiabetesTrainingController(Resource):
 
+    def get(self):
+        AllModels().train()
+        return "Thanks"

@@ -4,7 +4,7 @@ from werkzeug.contrib.fixers import ProxyFix
 from com.platform.health.diabetes.data.user_data import UserFileuploadscontroller
 from flask_cors import CORS
 from com.platform.core.web.home import HomeController
-from com.platform.health.diabetes.web.diabetes import DiabetesController, DiabetesDataSetController, DiabetesDataTestController, RegistrationController
+from com.platform.health.diabetes.web.diabetes import DiabetesController, DiabetesDataSetController, DiabetesDataTestController, RegistrationController,DiabetesTrainingController
 
 app = Flask(__name__)
 CORS(app)
@@ -23,7 +23,7 @@ api.add_resource(DiabetesController, '/api/diabetes/<model_name>', endpoint="dia
 api.add_resource(DiabetesDataSetController, '/api/diabetes/dataset/<name>', endpoint="diabetes/dataset")
 api.add_resource(UserFileuploadscontroller,'/api/diabetes/dataset/upload',endpoint="dataset/upload")
 api.add_resource(RegistrationController,'/api/diabetes/registration',endpoint="diabetes/registration")
-
+api.add_resource(DiabetesTrainingController,'/api/diabetes/train', endpoint="diabetes/train")
 
 if __name__ == '__main__':
     app.run(debug=True,port=5000,host="212.83.186.174")
