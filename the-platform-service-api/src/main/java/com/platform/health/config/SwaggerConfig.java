@@ -31,10 +31,8 @@ public class SwaggerConfig {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).apiInfo(DEFAULT_API_INFO).produces(DEFAULT_PRODUCES_AND_CONSUMES)
-				.consumes(DEFAULT_PRODUCES_AND_CONSUMES).select().apis(RequestHandlerSelectors.basePackage("com.whizit.accent"))
-				.paths(PathSelectors.regex("/api.*"))
+				.consumes(DEFAULT_PRODUCES_AND_CONSUMES).select()
+				.apis(RequestHandlerSelectors.basePackage("com.platform.health")).paths(PathSelectors.regex("/api.*"))
 				.build();
 	}
 }
-
-

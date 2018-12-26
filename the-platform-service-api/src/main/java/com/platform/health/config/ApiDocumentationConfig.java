@@ -8,9 +8,9 @@ import io.swagger.annotations.SwaggerDefinition;
 
 @SwaggerDefinition(
         info = @Info(
-                description = "Accent Resources",
+                description = "Platform Resources",
                 version = "V12.0.12",
-                title = "Accent Resource API",
+                title = "Platform Resource API",
                 contact = @Contact(
                    name = "Whiz IT", 
                    email = "whizit@whizit.co.in", 
@@ -24,7 +24,7 @@ import io.swagger.annotations.SwaggerDefinition;
         consumes = {"application/json", "application/xml"},
         produces = {"application/json", "application/xml"},
         schemes = {SwaggerDefinition.Scheme.HTTP, SwaggerDefinition.Scheme.HTTPS},
-        externalDocs = @ExternalDocs(value = "Read This For Sure", url = "http://localhost:8081/accent-service-api")
+        externalDocs = @ExternalDocs(value = "Read This For Sure", url = "http://localhost:8081/the-platform-service-api")
 )
 public interface ApiDocumentationConfig {
 

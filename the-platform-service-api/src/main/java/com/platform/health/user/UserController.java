@@ -1,6 +1,7 @@
 package com.platform.health.user;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,34 +34,42 @@ public class UserController {
 
 	@PostMapping("/")
 	public ResponseEntity<User> save(@RequestBody User newUser) {
-		return new ResponseEntity<User>((userRepository.save(newUser)) ,HttpStatus.OK);
+		String email = newUser.getEmailId();
+
+		if (!newUser.getPassword().equals(newUser.getConfirmPassword())) {
+			throw new UserException("Password fields do not match", newUser.getId());
+		}
+		if (null == email || email.isEmpty() || email.isBlank()) {
+			throw new UserException("email is mandatory", newUser.getId());
+		}
+		return new ResponseEntity<User>((userRepository.save(newUser)), HttpStatus.OK);
+
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<User> findById(@PathVariable String id) {
-		final var response = new ResponseEntity<User>(HttpStatus.OK);
-		userRepository.findById(id).ifPresentOrElse(u->{
-			response.ok(u);
-		}, ()->{
-			response.status(HttpStatus.NOT_FOUND);
-		});
-		return response;
+		Optional<User> entity = userRepository.findById(id);
+		if (entity.isPresent()) {
+			return new ResponseEntity<User>(entity.get(), HttpStatus.OK);
+		} else {
+			throw new UserException("User not found:", id);
+		}
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<User> update(@RequestBody User newUser, @PathVariable(name = "id", required = true) String id) {
+	public ResponseEntity<User> update(@RequestBody User newUser,
+			@PathVariable(name = "id", required = true) String id) {
 		return userRepository.findById(id).map(user -> {
-			user.setLogin(newUser.getLogin());
-			user.setUserId(newUser.getUserId());
-			user.setPassword(newUser.getPassword());
+
 			user.setFirstName(newUser.getFirstName());
 			user.setLastName(newUser.getLastName());
 			user.setEmailId(newUser.getEmailId());
 			user.setPhone(newUser.getPhone());
-			user.setRole(newUser.getRole());
-			return new ResponseEntity<User>(userRepository.save(user),HttpStatus.OK);
+			user.setPassword(newUser.getPassword());
+			user.setConfirmPassword(newUser.getPassword());
+			return new ResponseEntity<User>(userRepository.save(user), HttpStatus.OK);
 		}).orElseGet(() -> {
-			return new ResponseEntity<User>(newUser,HttpStatus.NOT_FOUND);
+			return new ResponseEntity<User>(newUser, HttpStatus.NOT_FOUND);
 		});
 
 	}
@@ -68,7 +77,7 @@ public class UserController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> delete(@PathVariable String id) {
 		userRepository.deleteById(id);
-		return  new ResponseEntity<String>("User deleted successfully!!",HttpStatus.OK);
+		return new ResponseEntity<String>("User deleted successfully!!", HttpStatus.OK);
 	}
 
 }

@@ -14,16 +14,13 @@ import lombok.Data;
 @Table(name = "TB_USER")
 @Data
 @Access(AccessType.PROPERTY)
-public class User extends BaseEntity{
+public class User extends BaseEntity {
 
 	@Column(name = "user_id", length = 100, nullable = false, unique = true)
-	private String userId;
-	private String login;
-	private String password;
 	private String firstName;
 	private String lastName;
 	private String emailId;
 	private String phone;
-	private String role;
-
+	private String password;
+	private String confirmPassword;
 }
