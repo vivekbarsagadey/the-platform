@@ -1,4 +1,4 @@
-/*package com.platform.health.mail;
+package com.platform.health.mail;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,18 +9,19 @@ import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.velocity.VelocityEngineUtils;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @RequestMapping("/api/mail")
-public class TestMainController {
+public class TestMailController {
 	@Autowired
 	public JavaMailSender emailSender;
 
-	@Autowired
-	private VelocityEngine velocityEngine;
+	private VelocityEngine velocityEngine = new VelocityEngine();
 
 	@RequestMapping("/sendMail")
 	public String sendMail() {
@@ -29,22 +30,14 @@ public class TestMainController {
 
 		try {
 
-			
-			 * VelocityContext context = new VelocityContext(); StringWriter stringWriter =
-			 * new StringWriter(); velocityEngine.mergeTemplate("email.vm", "UTF-8",
-			 * context, stringWriter);
-			 
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("title", "hi");
 			model.put("body", "hello hi there");
 			String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, "templates/email.vm", "UTF-8",
 					model);
-			// System.out.println("sdasdad >>>> " + stringWriter.toString() );
-			System.out.println(
-					"_____######################################################################################"
-							+ text);
+			System.out.println(text);
 
-			helper.setTo("vivek.bnb@gmail.com");
+			helper.setTo("bmgroupbali@gmail.com");
 			helper.setText(text, true);
 			helper.setSubject("Mail From Spring Boot");
 		} catch (Exception e) {
@@ -56,4 +49,3 @@ public class TestMainController {
 	}
 
 }
-*/
