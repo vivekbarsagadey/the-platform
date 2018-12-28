@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.platform.health.hospital.Hospital;
+import com.platform.health.hospital.HospitalRepository;
 import com.platform.health.patient.Patient;
 import com.platform.health.patient.PatientRepository;
 
@@ -35,6 +37,9 @@ public class UploadFileController {
 
 	@Autowired
 	PatientRepository patientRepository;
+	
+	@Autowired
+	HospitalRepository hospitalRepository;
 
 	/*
 	 * @Autowired private CloudinaryAdapter cloudinaryAdapter;
@@ -80,7 +85,7 @@ public class UploadFileController {
 	public ResponseEntity<String> loadPatientData(@RequestParam("uploadfile") MultipartFile file) {
 		String out = null;
 		try {
-			out = fileStorage.loadloadPatientInfo(file);
+			out = fileStorage.loadPatientInfo(file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -128,4 +133,58 @@ public class UploadFileController {
 		return new ResponseEntity<String>("Patient deleted successfully!!", HttpStatus.OK);
 	}
 
+//------------------------------------------HOSPITAL DATA CSV READING CODE--------------------------------------------------------------------------------------------------------
+	@RequestMapping(value = "/hospital", method = RequestMethod.POST, produces = "application/json")
+	@ApiOperation(value = "Load hospital data from csv file", produces = "application/text")
+	public ResponseEntity<String> loadHospitalData(@RequestParam("uploadfile") MultipartFile file) {
+		String out = null;
+		try {
+			out = fileStorage.loadHospitalInfo(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<String>(out, HttpStatus.OK);
+	}
+	
+	@GetMapping("/hospital")
+	@ApiOperation(value = "Get all hospital data", produces = "application/text")
+	public ResponseEntity<List<Hospital>> getHospitalData() {
+		List<Hospital> list = hospitalRepository.findAll();
+		return new ResponseEntity<List<Hospital>>(list, HttpStatus.OK);
+	}
+	@GetMapping("/hospital/{id}")
+	public ResponseEntity<Hospital> findHospitalById(@PathVariable String id) {
+		Optional<Hospital> entity = hospitalRepository.findById(id);
+		return new ResponseEntity<Hospital>(entity.get(), HttpStatus.OK);
+
+	}
+
+	@PutMapping("/hospital/{id}")
+	public ResponseEntity<Hospital> updateHospital(@RequestBody Hospital newHospital,
+			@PathVariable(name = "id", required = true) String id) {
+		return hospitalRepository.findById(id).map(hospital -> {
+
+			hospital.setHospitalId(newHospital.getHospitalId());
+			hospital.setState(newHospital.getState());
+			hospital.setCity(newHospital.getCity());
+			hospital.setHospital(newHospital.getHospital());
+			hospital.setCategory(newHospital.getCategory());
+			hospital.setSystemsOfMedicine(newHospital.getSystemsOfMedicine());
+			hospital.setContactDetails(newHospital.getContactDetails());
+			hospital.setPinCode(newHospital.getPinCode());
+			hospital.setEmailAddress(newHospital.getEmailAddress());
+			hospital.setWebsiteLink(newHospital.getWebsiteLink());
+						return new ResponseEntity<Hospital>(hospitalRepository.save(hospital), HttpStatus.OK);
+		}).orElseGet(() -> {
+			return new ResponseEntity<Hospital>(newHospital, HttpStatus.NOT_FOUND);
+		});
+
+	}
+
+	@DeleteMapping("/hospital/{id}")
+	public ResponseEntity<String> deleteHospital(@PathVariable String id) {
+		hospitalRepository.deleteById(id);
+		return new ResponseEntity<String>("Hospital deleted successfully!!", HttpStatus.OK);
+	}
+	
 }

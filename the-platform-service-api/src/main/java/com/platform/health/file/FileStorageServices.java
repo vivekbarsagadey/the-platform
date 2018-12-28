@@ -26,6 +26,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.platform.health.hospital.Hospital;
+import com.platform.health.hospital.HospitalRepository;
 import com.platform.health.patient.Patient;
 import com.platform.health.patient.PatientRepository;
 
@@ -38,6 +40,9 @@ public class FileStorageServices {
 
 	@Autowired
 	private PatientRepository patientRepository;
+	
+	@Autowired
+	HospitalRepository hospitalRepository;
 
 	Logger log = LoggerFactory.getLogger(this.getClass().getName());
 	private final Path rootLocation = Paths.get("filestorage");
@@ -105,7 +110,7 @@ public class FileStorageServices {
 	 * (fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0) return
 	 * fileName.substring(fileName.lastIndexOf(".") + 1); else return ""; }
 	 */
-	public String loadloadPatientInfo(MultipartFile file)
+	public String loadPatientInfo(MultipartFile file)
 			throws EncryptedDocumentException, InvalidFormatException, IOException {
 		final String delimiter = ",";
 		try {
@@ -130,6 +135,44 @@ public class FileStorageServices {
 					newPatient.setDiabetesPedigreeFunction(tempArr[6]);
 					newPatient.setAge(tempArr[8]);
 					patientRepository.save(newPatient);
+				}
+				i++;
+				System.out.println();
+			}
+			br.close();
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		return "successfully loaded!!";
+	}
+	//------------------------------------------HOSPITAL DATA CSV READING CODE--------------------------------------------------------------------------------------------------------
+	public String loadHospitalInfo(MultipartFile file)
+			throws EncryptedDocumentException, InvalidFormatException, IOException {
+		final String delimiter = ",";
+		try {
+			File f = new File(
+					System.getProperty("user.dir") + "\\src\\main\\resources\\csv's\\" + file.getOriginalFilename());
+			FileReader fr = new FileReader(f);
+			BufferedReader br = new BufferedReader(fr);
+			String line = "";
+			String[] tempArr;
+			int i = 0;
+			while ((line = br.readLine()) != null) {
+				Hospital newHospital = new Hospital();
+				tempArr = line.split(delimiter);
+				if (i != 0) {
+					newHospital.setHospitalId(tempArr[0]);
+					newHospital.setState(tempArr[1]);
+					newHospital.setCity(tempArr[2]);
+					newHospital.setHospital(tempArr[3]);
+					newHospital.setCategory(tempArr[4]);
+					newHospital.setSystemsOfMedicine(tempArr[5]);
+					newHospital.setContactDetails(tempArr[6]);
+					newHospital.setPinCode(tempArr[7]);
+					newHospital.setEmailAddress(tempArr[8]);
+					newHospital.setWebsiteLink(tempArr[9]);
+					hospitalRepository.save(newHospital);
 				}
 				i++;
 				System.out.println();
