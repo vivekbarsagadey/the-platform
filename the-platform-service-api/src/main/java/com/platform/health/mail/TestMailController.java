@@ -37,7 +37,7 @@ public class TestMailController {
 					model);
 			System.out.println(text);
 
-			helper.setTo("bmgroupbali@gmail.com");
+			helper.setTo("vivek.bnb@gmail.com");
 			helper.setText(text, true);
 			helper.setSubject("Mail From Spring Boot");
 		} catch (Exception e) {
