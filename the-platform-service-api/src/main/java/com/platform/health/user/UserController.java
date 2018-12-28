@@ -1,4 +1,4 @@
-package com.platform.health.user;
+/*package com.platform.health.user;
 
 import java.util.List;
 import java.util.Optional;
@@ -80,4 +80,4 @@ public class UserController {
 		return new ResponseEntity<String>("User deleted successfully!!", HttpStatus.OK);
 	}
 
-}
+}*/

@@ -1,4 +1,4 @@
-package com.platform.health.user;
+/*package com.platform.health.user;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -24,3 +24,4 @@ public class User extends BaseEntity {
 	private String password;
 	private String confirmPassword;
 }
+*/
