@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.platform.health.doctor.Doctor;
+import com.platform.health.doctor.DoctorRepository;
 import com.platform.health.hospital.Hospital;
 import com.platform.health.hospital.HospitalRepository;
 import com.platform.health.patient.Patient;
@@ -37,9 +39,12 @@ public class UploadFileController {
 
 	@Autowired
 	PatientRepository patientRepository;
-	
+
 	@Autowired
 	HospitalRepository hospitalRepository;
+
+	@Autowired
+	DoctorRepository doctorRepository;
 
 	/*
 	 * @Autowired private CloudinaryAdapter cloudinaryAdapter;
@@ -145,13 +150,14 @@ public class UploadFileController {
 		}
 		return new ResponseEntity<String>(out, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/hospital")
 	@ApiOperation(value = "Get all hospital data", produces = "application/text")
 	public ResponseEntity<List<Hospital>> getHospitalData() {
 		List<Hospital> list = hospitalRepository.findAll();
 		return new ResponseEntity<List<Hospital>>(list, HttpStatus.OK);
 	}
+
 	@GetMapping("/hospital/{id}")
 	public ResponseEntity<Hospital> findHospitalById(@PathVariable String id) {
 		Optional<Hospital> entity = hospitalRepository.findById(id);
@@ -174,7 +180,7 @@ public class UploadFileController {
 			hospital.setPinCode(newHospital.getPinCode());
 			hospital.setEmailAddress(newHospital.getEmailAddress());
 			hospital.setWebsiteLink(newHospital.getWebsiteLink());
-						return new ResponseEntity<Hospital>(hospitalRepository.save(hospital), HttpStatus.OK);
+			return new ResponseEntity<Hospital>(hospitalRepository.save(hospital), HttpStatus.OK);
 		}).orElseGet(() -> {
 			return new ResponseEntity<Hospital>(newHospital, HttpStatus.NOT_FOUND);
 		});
@@ -186,5 +192,57 @@ public class UploadFileController {
 		hospitalRepository.deleteById(id);
 		return new ResponseEntity<String>("Hospital deleted successfully!!", HttpStatus.OK);
 	}
-	
+
+	// ------------------------------------------DOCTOR DATA CSV READING CODE--------------------------------------------------------------------------------------------------------
+	@RequestMapping(value = "/doctor", method = RequestMethod.POST, produces = "application/json")
+	@ApiOperation(value = "Load Doctor data from csv file", produces = "application/text")
+	public ResponseEntity<String> loadDoctorData(@RequestParam("uploadfile") MultipartFile file) {
+		String out = null;
+		try {
+			out = fileStorage.loadDoctorInfo(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<String>(out, HttpStatus.OK);
+	}
+
+	@GetMapping("/doctor")
+	@ApiOperation(value = "Get all Doctor data", produces = "application/text")
+	public ResponseEntity<List<Doctor>> getDoctorData() {
+		List<Doctor> list = doctorRepository.findAll();
+		return new ResponseEntity<List<Doctor>>(list, HttpStatus.OK);
+	}
+
+	@GetMapping("/doctor/{id}")
+	public ResponseEntity<Doctor> findDoctorById(@PathVariable String id) {
+		Optional<Doctor> entity = doctorRepository.findById(id);
+		return new ResponseEntity<Doctor>(entity.get(), HttpStatus.OK);
+
+	}
+
+	@PutMapping("/doctor/{id}")
+	public ResponseEntity<Doctor> updateDoctor(@RequestBody Doctor newDoctor,
+			@PathVariable(name = "id", required = true) String id) {
+		return doctorRepository.findById(id).map(doctor -> {
+
+			doctor.setId(newDoctor.getId());
+			doctor.setName(newDoctor.getName());
+			doctor.setCity(newDoctor.getCity());
+			doctor.setEmail(newDoctor.getEmail());
+			doctor.setPhone(newDoctor.getPhone());
+			doctor.setArea(newDoctor.getArea());
+			doctor.setAddress(newDoctor.getAddress());
+		
+			return new ResponseEntity<Doctor>(doctorRepository.save(doctor), HttpStatus.OK);
+		}).orElseGet(() -> {
+			return new ResponseEntity<Doctor>(newDoctor, HttpStatus.NOT_FOUND);
+		});
+
+	}
+
+	@DeleteMapping("/doctor/{id}")
+	public ResponseEntity<String> deleteDoctor(@PathVariable String id) {
+		doctorRepository.deleteById(id);
+		return new ResponseEntity<String>("Doctor deleted successfully!!", HttpStatus.OK);
+	}
 }

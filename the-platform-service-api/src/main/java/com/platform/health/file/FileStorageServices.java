@@ -26,6 +26,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.platform.health.doctor.Doctor;
+import com.platform.health.doctor.DoctorRepository;
 import com.platform.health.hospital.Hospital;
 import com.platform.health.hospital.HospitalRepository;
 import com.platform.health.patient.Patient;
@@ -40,10 +42,12 @@ public class FileStorageServices {
 
 	@Autowired
 	private PatientRepository patientRepository;
-	
+
 	@Autowired
 	HospitalRepository hospitalRepository;
 
+	@Autowired
+	DoctorRepository doctorRepository;
 	Logger log = LoggerFactory.getLogger(this.getClass().getName());
 	private final Path rootLocation = Paths.get("filestorage");
 
@@ -146,7 +150,9 @@ public class FileStorageServices {
 		}
 		return "successfully loaded!!";
 	}
-	//------------------------------------------HOSPITAL DATA CSV READING CODE--------------------------------------------------------------------------------------------------------
+
+	// ------------------------------------------HOSPITAL DATA CSV READING
+	// CODE--------------------------------------------------------------------------------------------------------
 	public String loadHospitalInfo(MultipartFile file)
 			throws EncryptedDocumentException, InvalidFormatException, IOException {
 		final String delimiter = ",";
@@ -173,6 +179,44 @@ public class FileStorageServices {
 					newHospital.setEmailAddress(tempArr[8]);
 					newHospital.setWebsiteLink(tempArr[9]);
 					hospitalRepository.save(newHospital);
+				}
+				i++;
+				System.out.println();
+			}
+			br.close();
+
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		return "successfully loaded!!";
+	}
+
+	// ------------------------------------------DOCTOR DATA CSV READING
+	// CODE--------------------------------------------------------------------------------------------------------
+	public String loadDoctorInfo(MultipartFile file)
+			throws EncryptedDocumentException, InvalidFormatException, IOException {
+		final String delimiter = ",";
+		try {
+			File f = new File(
+					System.getProperty("user.dir") + "\\src\\main\\resources\\csv's\\" + file.getOriginalFilename());
+			FileReader fr = new FileReader(f);
+			BufferedReader br = new BufferedReader(fr);
+			String line = "";
+			String[] tempArr;
+			int i = 0;
+			while ((line = br.readLine()) != null) {
+				Doctor newHDoctor = new Doctor();
+				tempArr = line.split(delimiter);
+				if (i != 0) {
+					newHDoctor.setId(tempArr[0]);
+					newHDoctor.setName(tempArr[1]);
+					newHDoctor.setAddress(tempArr[2]);
+					newHDoctor.setArea(tempArr[3]);
+					newHDoctor.setCity(tempArr[4]);
+					newHDoctor.setPhone(tempArr[5]);
+					newHDoctor.setEmail(tempArr[6]);
+
+					doctorRepository.save(newHDoctor);
 				}
 				i++;
 				System.out.println();
