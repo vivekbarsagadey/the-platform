@@ -70,4 +70,5 @@ public class UploadFileController {
 		}
 		return new ResponseEntity<String>(out, HttpStatus.OK);
 	}
+	
 }
