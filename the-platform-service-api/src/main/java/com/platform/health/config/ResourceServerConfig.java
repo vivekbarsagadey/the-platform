@@ -1,5 +1,10 @@
 package com.platform.health.config;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -19,6 +24,20 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter {
 
 		web.ignoring().antMatchers("/api/**").antMatchers(SWAGGER_UI);
 
+	}
+	@Bean
+	public FilterRegistrationBean<SimpleCORSFilter> filterRegistration() {
+		FilterRegistrationBean<SimpleCORSFilter> registrationBean = new FilterRegistrationBean<SimpleCORSFilter>();
+		registrationBean.setFilter(new SimpleCORSFilter());
+		// registrationBean.addUrlPatterns("/*");
+		Collection<String> urlPatters = new ArrayList<String>();
+		urlPatters.add("/api/*");
+		urlPatters.add("/*");
+		registrationBean.setUrlPatterns(urlPatters);
+		registrationBean.setName("AllowCORS");
+		registrationBean.setOrder(1);
+
+		return registrationBean;
 	}
 
 }
