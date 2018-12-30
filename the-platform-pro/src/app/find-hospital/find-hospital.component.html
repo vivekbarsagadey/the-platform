@@ -1,3 +1,95 @@
-<p  style="margin-top: 7%" class="text-center">
-  find-hospital works!
-</p>
+<div class="container find-doctor">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row container search-container">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-6">
+              <form role="form" class="form-inline">
+                <div class="form-group">
+                  <label for="yourZipCode">
+                    Your Zip Code
+                  </label>
+                  <input type="text" class="form-control" id="yourZipCode" />
+                </div>
+                <button type="submit" class="btn btn-platform">
+                  Search
+                </button>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <form role="form" class="form-inline">
+                <div class="form-group">
+                  <label for="yourlocation">
+                    Your location
+                  </label>
+                  <input type="text" class="form-control" id="yourlocation" />
+                </div>
+                <button type="submit" class="btn btn-platform">
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="row container">
+        <div class="col-md-12">
+          <div class="jumbotron">
+            <h2>
+              Find Urgent Care!
+            </h2>
+            <p>
+              Make an informed choice based on symptoms, convenience and cost.
+            </p>
+            <p>
+              <a class="btn btn-platform btn-large" href="#">Search For Urgent Care</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row container">
+        <div class="col-md-12">
+          <div class="row jumbotron" *ngFor="let hospital of hospitalInfo">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-2">
+                  <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+                </div>
+                <div class="col-md-10">
+                  <h3>
+                    <!--Dr. Dina Gad <strong><small>(MD)</small></strong>-->
+                    {{hospital.hospital}}
+                  </h3>
+                  <address>
+
+                    <strong>Category:</strong> {{hospital.category}} hospital <br>
+                    <strong>Contact Details: </strong>{{hospital.contactDetails}} <br>
+                    {{hospital.city}},
+                    {{hospital.state}}
+                    <strong>
+                      Pin Code: </strong>{{hospital.pinCode}} <br>
+                    <!--Mail ID: {{hospital.emailAddress}} <br>-->
+                    <!--<a href="{{hospital.websiteLink}}">Visit Hospital</a>-->
+                    <!--Dr. Gad is very professional and attentive, and seems highly knowledgeable. I highly recommend her.-->
+                    <!--Weill Cornell Medicine.-->
+
+
+
+                    <!--<strong>NY</strong><br /> 156 William Street<br /> 7th Floor, New York, NY10038<br /> <abbr title="Phone">P:</abbr> (123) 456-7890-->
+                    <strong>Mail ID :</strong>{{hospital.emailAddress}} <br>
+                    <strong><a href="{{hospital.websiteLink}}">Visit Hospital</a></strong>
+                  </address>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

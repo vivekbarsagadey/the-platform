@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {PlatformApiService} from '../service/platform-api.service';
+
+
+
 
 @Component({
   selector: 'app-find-hospital',
@@ -6,10 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./find-hospital.component.scss']
 })
 export class FindHospitalComponent implements OnInit {
-
-  constructor() { }
+  hospitalInfo;
+  constructor(private platformService: PlatformApiService) { }
 
   ngOnInit() {
+    this.getAllHospitals();
   }
-
+getAllHospitals() {
+  this.platformService.getAllHospitalInfo().then(res => {
+    this.hospitalInfo = res;
+  });
+  }
 }

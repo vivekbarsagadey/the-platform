@@ -20,7 +20,7 @@ export class UploadFileComponent  {
     fiormData.append('file', this.selectedFile);
     this.apiService.uploadData(fiormData).then(
       success => {
-        if(success.status === 200){
+        if (success.status === 200) {
           alert('File Uploaded Successfuly');
         }
       }

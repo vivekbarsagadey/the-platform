@@ -53,7 +53,7 @@
 
       <div class="row container">
         <div class="col-md-12">
-          <div class="row jumbotron">
+          <div class="row jumbotron" *ngFor="let doctor of doctorsInfo">
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-2">
@@ -61,76 +61,22 @@
                 </div>
                 <div class="col-md-10">
                   <h3>
-                    Dr. Dina Gad <strong><small>(MD)</small></strong>
+                    <!--Dr. Dina Gad <strong><small>(MD)</small></strong>-->
+                    {{doctor.name}}
                   </h3>
                   <p>
-                    Dr. Gad is very professional and attentive, and seems highly knowledgeable. I highly recommend her.
-                    Weill Cornell Medicine.
+                    <!--Dr. Gad is very professional and attentive, and seems highly knowledgeable. I highly recommend her.-->
+                    <!--Weill Cornell Medicine.-->
+                    {{doctor.address}}
+                    <br>
+                    {{doctor.area}}
+                    <br>
+                    {{doctor.city}}
                   </p>
                   <address>
-                    <strong>NY</strong><br /> 156 William Street<br /> 7th Floor, New York, NY10038<br /> <abbr title="Phone">P:</abbr> (123) 456-7890
-                  </address>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row jumbotron">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-2">
-                  <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
-                </div>
-                <div class="col-md-10">
-                  <h3>
-                    Dr. Andrew Fagelman <strong><small>(MD)</small></strong>
-                  </h3>
-                  <p>
-                    I love the nurse students here. So professional!!.
-                  </p>
-                  <address>
-                    <strong>NY</strong><br /> 155 Spring St.<br /> 4th Floor, New York, NY10038<br /> <abbr title="Phone">P:</abbr> (123) 456-7890
-                  </address>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row jumbotron">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-2">
-                  <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
-                </div>
-                <div class="col-md-10">
-                  <h3>
-                    Dr. Dina Gad <strong><small>(MD)</small></strong>
-                  </h3>
-                  <p>
-                    Dr. Gad is very professional and attentive, and seems highly knowledgeable. I highly recommend her.
-                    Weill Cornell Medicine.
-                  </p>
-                  <address>
-                    <strong>NY</strong><br /> 156 William Street<br /> 7th FloorNew York, NY10038<br /> <abbr title="Phone">P:</abbr> (123) 456-7890
-                  </address>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row jumbotron">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-2">
-                  <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
-                </div>
-                <div class="col-md-10">
-                  <h3>
-                    Dr. Dina Gad <strong><small>(MD)</small></strong>
-                  </h3>
-                  <p>
-                    Dr. Gad is very professional and attentive, and seems highly knowledgeable. I highly recommend her.
-                    Weill Cornell Medicine.
-                  </p>
-                  <address>
-                    <strong>NY</strong><br /> 156 William Street<br /> 7th FloorNew York, NY10038<br /> <abbr title="Phone">P:</abbr> (123) 456-7890
+                    <!--<strong>NY</strong><br /> 156 William Street<br /> 7th Floor, New York, NY10038<br /> <abbr title="Phone">P:</abbr> (123) 456-7890-->
+                    <strong>Phone No. :</strong>{{doctor.phone}} <br>
+                    <strong>Mail ID :</strong>{{doctor.email}}
                   </address>
                 </div>
               </div>

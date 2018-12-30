@@ -10,11 +10,18 @@ export class PlatformApiService {
 
 
   uploadAllData(data) {
-    return ApiUtil.postData('all', data)
+    return ApiUtil.postData('api/diabetes/all', data);
   }
 
   uploadData(data) {
-    return ApiUtil.postData('dataset/upload', data);
+    return ApiUtil.postData('api/diabetes/dataset/upload', data);
   }
-
+  getAllHospitalInfo() {
+    return ApiUtil.getJavaData('the-platform/api/file/hospital')
+      .then(response => response.json());
+  }
+  getAllDoctorInfo() {
+    return ApiUtil.getJavaData('the-platform/api/file/doctor')
+      .then(response => response.json());
+  }
 }

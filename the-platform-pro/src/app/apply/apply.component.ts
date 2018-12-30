@@ -93,8 +93,7 @@ export class ApplyComponent implements OnInit {
   //      .catch(error => console.error('Error:', error))
   //      .then(response => console.log('Success:', response));
   //  }
-  closeApplicationPage()
-  {
+  closeApplicationPage() {
     this.location.back();
     //  this.router.navigate(['home']);
   }
