@@ -1,22 +1,43 @@
-/*package com.platform.health.user;
+package com.platform.health.user;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import com.platform.health.common.domain.BaseEntity;
+import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
 
-@Entity
-@Table(name = "TB_USER")
 @Data
-@Access(AccessType.PROPERTY)
-public class User extends BaseEntity {
+public class User {
 
-	@Column(name = "user_id", length = 100, nullable = false, unique = true)
+	@Id
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
+	@Column(name="ID", updatable = false, length = 200)
+	private String id;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CREATED_DATE", updatable = false)
+	private Date createdDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "UPDATED_DATE")
+	private Date updatedDate;
+
+	@PrePersist
+	public void setPrePersistEntity() {
+		this.createdDate = new Date();
+		this.updatedDate = new Date();
+
+	}
+
 	private String firstName;
 	private String lastName;
 	private String emailId;
@@ -24,4 +45,3 @@ public class User extends BaseEntity {
 	private String password;
 	private String confirmPassword;
 }
-*/

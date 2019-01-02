@@ -1,10 +1,12 @@
-/*package com.platform.health.user;
+package com.platform.health.user;
 
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,15 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiOperation;
 
-@RestController
+@Controller
 @RequestMapping("/api/users")
 public class UserController {
 
-	private final UserRepository userRepository;
-
-	public UserController(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
+	@Autowired
+	private UserRepository userRepository;
 
 	@GetMapping("/")
 	@ApiOperation(value = "Get All users", produces = "application/text")
@@ -67,6 +66,8 @@ public class UserController {
 			user.setPhone(newUser.getPhone());
 			user.setPassword(newUser.getPassword());
 			user.setConfirmPassword(newUser.getPassword());
+			user.setCreatedDate(newUser.getCreatedDate());
+			user.setUpdatedDate(newUser.getUpdatedDate());
 			return new ResponseEntity<User>(userRepository.save(user), HttpStatus.OK);
 		}).orElseGet(() -> {
 			return new ResponseEntity<User>(newUser, HttpStatus.NOT_FOUND);
@@ -80,4 +81,4 @@ public class UserController {
 		return new ResponseEntity<String>("User deleted successfully!!", HttpStatus.OK);
 	}
 
-}*/
+}

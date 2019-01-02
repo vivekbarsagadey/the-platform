@@ -138,6 +138,8 @@ public class FileStorageServices {
 					newPatient.setBmi(tempArr[6]);
 					newPatient.setDiabetesPedigreeFunction(tempArr[6]);
 					newPatient.setAge(tempArr[8]);
+					newPatient.setCreatedDate(newPatient.getCreatedDate());
+					newPatient.setUpdatedDate(newPatient.getUpdatedDate());
 					patientRepository.save(newPatient);
 				}
 				i++;
@@ -178,6 +180,8 @@ public class FileStorageServices {
 					newHospital.setPinCode(tempArr[7]);
 					newHospital.setEmailAddress(tempArr[8]);
 					newHospital.setWebsiteLink(tempArr[9]);
+					newHospital.setCreatedDate(newHospital.getCreatedDate());
+					newHospital.setUpdatedDate(newHospital.getUpdatedDate());
 					hospitalRepository.save(newHospital);
 				}
 				i++;
@@ -215,8 +219,10 @@ public class FileStorageServices {
 					newHDoctor.setCity(tempArr[4]);
 					newHDoctor.setPhone(tempArr[5]);
 					newHDoctor.setEmail(tempArr[6]);
-
+					newHDoctor.setCreatedDate(newHDoctor.getCreatedDate());
+					newHDoctor.setUpdatedDate(newHDoctor.getUpdatedDate());
 					doctorRepository.save(newHDoctor);
+
 				}
 				i++;
 				System.out.println();

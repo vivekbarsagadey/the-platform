@@ -1,17 +1,9 @@
 package com.platform.health.file;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import lombok.Data;
-
-//@Entity
-//@Table(name = "TB_IMAGES")
 @Data
-@Access(AccessType.PROPERTY)
 public class ItemImages {
 
 	@Column(name = "name")

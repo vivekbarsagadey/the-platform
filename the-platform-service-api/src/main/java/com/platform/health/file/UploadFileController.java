@@ -125,6 +125,8 @@ public class UploadFileController {
 			patient.setBmi(newPatient.getBmi());
 			patient.setBloodpressure(newPatient.getBloodpressure());
 			patient.setAge(newPatient.getAge());
+			patient.setCreatedDate(newPatient.getCreatedDate());
+			patient.setUpdatedDate(newPatient.getUpdatedDate());
 			return new ResponseEntity<Patient>(patientRepository.save(patient), HttpStatus.OK);
 		}).orElseGet(() -> {
 			return new ResponseEntity<Patient>(newPatient, HttpStatus.NOT_FOUND);
@@ -180,6 +182,8 @@ public class UploadFileController {
 			hospital.setPinCode(newHospital.getPinCode());
 			hospital.setEmailAddress(newHospital.getEmailAddress());
 			hospital.setWebsiteLink(newHospital.getWebsiteLink());
+			hospital.setCreatedDate(newHospital.getCreatedDate());
+			hospital.setUpdatedDate(newHospital.getUpdatedDate());
 			return new ResponseEntity<Hospital>(hospitalRepository.save(hospital), HttpStatus.OK);
 		}).orElseGet(() -> {
 			return new ResponseEntity<Hospital>(newHospital, HttpStatus.NOT_FOUND);
@@ -193,7 +197,8 @@ public class UploadFileController {
 		return new ResponseEntity<String>("Hospital deleted successfully!!", HttpStatus.OK);
 	}
 
-	// ------------------------------------------DOCTOR DATA CSV READING CODE--------------------------------------------------------------------------------------------------------
+	// ------------------------------------------DOCTOR DATA CSV READING
+	// CODE--------------------------------------------------------------------------------------------------------
 	@RequestMapping(value = "/doctor", method = RequestMethod.POST, produces = "application/json")
 	@ApiOperation(value = "Load Doctor data from csv file", produces = "application/text")
 	public ResponseEntity<String> loadDoctorData(@RequestParam("uploadfile") MultipartFile file) {
@@ -232,7 +237,9 @@ public class UploadFileController {
 			doctor.setPhone(newDoctor.getPhone());
 			doctor.setArea(newDoctor.getArea());
 			doctor.setAddress(newDoctor.getAddress());
-		
+			doctor.setCreatedDate(newDoctor.getCreatedDate());
+			doctor.setUpdatedDate(newDoctor.getUpdatedDate());
+
 			return new ResponseEntity<Doctor>(doctorRepository.save(doctor), HttpStatus.OK);
 		}).orElseGet(() -> {
 			return new ResponseEntity<Doctor>(newDoctor, HttpStatus.NOT_FOUND);

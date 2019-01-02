@@ -1,19 +1,41 @@
 package com.platform.health.enterprise;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.util.Date;
 
-import com.platform.health.common.domain.BaseEntity;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import lombok.Data;
 
-@Entity
-@Table(name = "TB_ENTERPRISE_ENDPOINT")
 @Data
-@Access(AccessType.PROPERTY)
-public class EnterpriseEndpoint extends BaseEntity {
+public class EnterpriseEndpoint {
+
+	@Id
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
+	@Column(name="ID", updatable = false, length = 200)
+	private String id;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CREATED_DATE", updatable = false)
+	private Date createdDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "UPDATED_DATE")
+	private Date updatedDate;
+
+	@PrePersist
+	public void setPrePersistEntity() {
+		this.createdDate = new Date();
+		this.updatedDate = new Date();
+
+	}
 
 	private String url;
 	private String type;

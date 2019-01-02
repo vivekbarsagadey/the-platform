@@ -1,4 +1,4 @@
-/*package com.platform.health.login;
+package com.platform.health.login;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,4 +32,3 @@ public class LoginController {
 		return new ResponseEntity<String>("Wrong Password!!", HttpStatus.UNAUTHORIZED);
 	}
 }
-*/
