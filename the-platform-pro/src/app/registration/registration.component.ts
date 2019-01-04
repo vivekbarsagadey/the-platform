@@ -3,6 +3,7 @@ import {ActivatedRoute, Router, Params} from '@angular/router';
 import {Location} from '@angular/common';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {PlatformApiService} from '../service/platform-api.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   closeResult: string;
   formdata: FormGroup;
   constructor(private route: ActivatedRoute, private location: Location,
-              private router: Router, private modalService: NgbModal) { }
+              private router: Router, private modalService: NgbModal, private platformService: PlatformApiService) { }
 
   ngOnInit() {
     this.formdata = new FormGroup({
@@ -43,5 +44,9 @@ export class RegistrationComponent implements OnInit {
   // }
   registerUser(data) {
     console.log('registered', data);
+    this.platformService.userRegistration(data).then(res => {
+      // this.doctorsInfo = res;
+      alert('user register successfuly');
+    });
   }
 }

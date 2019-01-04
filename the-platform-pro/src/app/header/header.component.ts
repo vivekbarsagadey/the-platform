@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup} from '@angular/forms';
+import {PlatformApiService} from '../service/platform-api.service';
 
 
 @Component({
@@ -10,11 +11,13 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
   formdata: FormGroup;
-  constructor( private modalService: NgbModal) { }
+  dataSend: any = {'name': 'Ghanshyam',
+    'sname': 'GhanshyamMra'};
+  constructor( private modalService: NgbModal, private platformService: PlatformApiService) { }
 
   ngOnInit() {
     this.formdata = new FormGroup({
-      email: new FormControl(),
+      emailId: new FormControl(),
       password: new FormControl()
     });
   }
@@ -22,10 +25,17 @@ export class HeaderComponent implements OnInit {
     // this.productService.getMenuItem(id).then(res => {
     //   this.viewData = res;
     // });
-    this.modalService.open(content, {size: 'sm', ariaLabelledBy: 'view-product', backdrop: 'static'}).result.then((data) => {
+    this.modalService.open(content, {size: 'sm', ariaLabelledBy: 'view-product'}).result.then((data) => {
       console.log('login data', data);
+      this.useralogin(data);
     }, (reason) => {
       // this.viewData = '';
+    });
+  }
+  useralogin(data) {
+    this.platformService.loginUser(data).then(res => {
+      // this.doctorsInfo = res;
+      // alert('user register successfuly');
     });
   }
 }

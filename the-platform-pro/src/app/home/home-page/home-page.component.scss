@@ -4,8 +4,15 @@
   display: inline-block;
   position: relative;
   overflow: hidden;
-  margin-bottom: 20px;
+  padding: 23px;
+  height: 20vh;
+  //margin-bottom: 20px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.1s ease-in;
+
+  &:hover{
+    box-shadow: 0px 5px 25px 0px #888888;
+  }
 }
 .platform-unique{
   background:url('../../../assets/The-Platform-features-background.jpg') no-repeat center;
@@ -30,6 +37,7 @@ h4 {
 h1{
   color: #6a11cb;
   font-weight: 700;
+  margin-bottom: 10px !important;
 }
 h2{
   color: #6a11cb;
@@ -39,4 +47,18 @@ h2{
 .heading-font{
   color: #6a11cb;
   font-weight: 600;
+}
+p {
+  margin-bottom: 10px !important;
+  font-size: 1em;
+}
+h4{
+  margin-bottom: 5px !important;
+}
+.card-margine{
+  padding-left: 0px!important;
+  padding-right: 7px!important;
+}
+a{
+  text-decoration: none!important;
 }

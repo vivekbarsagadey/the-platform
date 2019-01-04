@@ -23,7 +23,8 @@ import { FaqsComponent } from './faqs/faqs.component';
 import { BlogComponent } from './blog/blog.component';
 import { FindDoctorComponent } from './find-doctor/find-doctor.component';
 import { FindHospitalComponent } from './find-hospital/find-hospital.component';
-
+import { CountUpModule } from 'countup.js-angular2';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const appRoutes: Routes = [
   {path: 'platform', component: HomeComponent,
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
       {path: '', redirectTo: 'check-diabetes', pathMatch: 'full'}
     ]},
   {path: 'register', component: RegistrationComponent},
+  {path: 'login', component: UserProfileComponent},
   {path: '', redirectTo: 'platform/home_page', pathMatch: 'full'}
 ];
 
@@ -71,6 +73,7 @@ const appRoutes: Routes = [
     BlogComponent,
     FindDoctorComponent,
     FindHospitalComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +81,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgbModule,
+    CountUpModule
   ],
   providers: [
     PlatformApiService

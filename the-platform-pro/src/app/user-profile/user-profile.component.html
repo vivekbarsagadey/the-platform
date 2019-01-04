@@ -1,0 +1,345 @@
+<!--<p style="margin-top: 7%" class="text-center">-->
+  <!--user-profile works!-->
+<!--</p>-->
+<!--<nav>-->
+  <!--<div class="nav nav-tabs" id="nav-tab" role="tablist" style="margin-bottom: 3vh">-->
+    <!--<a class="nav-item nav-link active" id="nav-gen-info-tab" data-toggle="tab" href="#nav-gen-info" role="tab"-->
+       <!--aria-controls="nav-gen-info" aria-selected="true">General Info</a>-->
+
+    <!--<a class="nav-item nav-link " id="nav-payments-tab" data-toggle="tab" href="#nav-payments" role="tab"-->
+       <!--aria-controls="nav-payments" aria-selected="true" (click)="getPaymentInfo()">Payments</a>-->
+  <!--</div>-->
+<!--</nav>-->
+<!--<div class="tab-content" id="nav-tabContent">-->
+  <!--<div class="tab-pane fade show active" id="nav-gen-info" role="tabpanel" aria-labelledby="nav-gen-info-tab">-->
+    <!--<form [formGroup]="generalInfo" (ngSubmit)="onClickSubmitGeneralInfo(generalInfo.value)"-->
+          <!--class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+      <!--<div class="row form-group">-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Address-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeAddress"-->
+                   <!--placeholder="Store Address"-->
+                   <!--formControlName="storeAddress">-->
+            <!--<span *ngIf="generalInfo.controls['storeAddress'].errors && generalInfo.controls['storeAddress'].valid">-->
+              <!--error-->
+            <!--</span>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store City-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeCity"-->
+                   <!--placeholder="Store City"-->
+                   <!--formControlName="storeCity">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row form-group">-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Code-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeCode"-->
+                   <!--placeholder="Store Code"-->
+                   <!--formControlName="storeCode">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Confirm Password-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeConfirmPassword"-->
+                   <!--placeholder="Store Confirm Password"-->
+                   <!--formControlName="storeConfirmPassword">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row form-group">-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Country-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeCountry"-->
+                   <!--placeholder="Store Country"-->
+                   <!--formControlName="storeCountry">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Email-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="email" class="form-control border-input fortextbox" name="storeEmail"-->
+                   <!--placeholder="Store Email"-->
+                   <!--formControlName="storeEmail">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="row form-group">-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Logo-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeLogo"-->
+                   <!--placeholder="Store Logo"-->
+                   <!--formControlName="storeLogo">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Name-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeName"-->
+                   <!--placeholder="Store Name"-->
+                   <!--formControlName="storeName">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row form-group">-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Fax-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeFax"-->
+                   <!--placeholder="Store Fax"-->
+                   <!--formControlName="storeFax">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Password-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storePassword"-->
+                   <!--placeholder="Store Password"-->
+                   <!--formControlName="storePassword">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row form-group">-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Phone1-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storePhone1"-->
+                   <!--placeholder="Store Phone1"-->
+                   <!--formControlName="storePhone1">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Phone2-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storePhone2"-->
+                   <!--placeholder="Store Phone2"-->
+                   <!--formControlName="storePhone2">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row form-group">-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Receipt Footer-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeReceiptFooter"-->
+                   <!--placeholder="Store Receipt Footer"-->
+                   <!--formControlName="storeReceiptFooter">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Receipt Header-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeReceiptHeader"-->
+                   <!--placeholder="Store Receipt Header"-->
+                   <!--formControlName="storeReceiptHeader">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row form-group">-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store State-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeState"-->
+                   <!--placeholder="Store State"-->
+                   <!--formControlName="storeState">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Store Zip-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="storeZip"-->
+                   <!--placeholder="Store Zip"-->
+                   <!--formControlName="storeZip">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row form-group">-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<input type="text" class="form-control border-input fortextbox" name="accountId"-->
+                   <!--placeholder="Account Id"-->
+                   <!--formControlName="accountId" hidden>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="row">-->
+        <!--<div class="col-lg-3 col-md-3">-->
+        <!--</div>-->
+        <!--<div class="col-lg-3 col-md-3">-->
+        <!--</div>-->
+        <!--<div class="col-lg-3 col-md-3">-->
+        <!--</div>-->
+        <!--<div class="col-lg-3 col-md-3">-->
+          <!--<button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!generalInfo.valid">Next</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</form>-->
+  <!--</div>-->
+
+  <!--<div class="tab-pane fade" id="nav-payments" role="tabpanel" aria-labelledby="nav-payments-tab">-->
+    <!--<form [formGroup]="paymentInfo" (ngSubmit)="onClickPayment(paymentInfo.value)"-->
+          <!--class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+      <!--<div class="row form-group">-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Payment Type-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<select type="text" class="form-control border-input fortextbox" name="paymentTypes"-->
+                    <!--placeholder="Payment Type"-->
+                    <!--formControlName="paymentTypes" multiple>-->
+              <!--&lt;!&ndash;<option selected="selected"></option>&ndash;&gt;-->
+              <!--<option value="{{payment}}" *ngFor="let payment of paymentTypes">{{payment}}</option>-->
+            <!--</select>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">-->
+          <!--<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">-->
+            <!--Tender Type-->
+          <!--</div>-->
+          <!--<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
+            <!--<select type="text" class="form-control border-input fortextbox" name="tenderTypes"-->
+                    <!--placeholder="Tender Type"-->
+                    <!--formControlName="tenderTypes" multiple>-->
+              <!--&lt;!&ndash;<option selected="selected"></option>&ndash;&gt;-->
+              <!--<option *ngFor="let tender of tenderTypes" value="{{tender}}">{{tender}}</option>-->
+            <!--</select>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;<div class="row form-group">&ndash;&gt;-->
+      <!--&lt;!&ndash;<div class="row col-lg-6 col-md-6 col-sm-12 col-xs-12">&ndash;&gt;-->
+      <!--&lt;!&ndash;<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">&ndash;&gt;-->
+      <!--&lt;!&ndash;Store Id&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">&ndash;&gt;-->
+      <!--&lt;!&ndash;<input type="text" class="form-control border-input fortextbox" name="storeId"&ndash;&gt;-->
+      <!--&lt;!&ndash;placeholder="Store Id"&ndash;&gt;-->
+      <!--&lt;!&ndash;formControlName="storeId" value="{{storeId}}" [(ngModel)]="storeId" >&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--<div class="row">-->
+        <!--<div class="col-lg-3 col-md-3">-->
+        <!--</div>-->
+        <!--<div class="col-lg-3 col-md-3">-->
+        <!--</div>-->
+        <!--<div class="col-lg-3 col-md-3">-->
+        <!--</div>-->
+        <!--<div class="col-lg-3 col-md-3">-->
+          <!--<button type="submit" class="btn btn-info btn-fill btn-wd" [disabled]="!paymentInfo.valid">Next</button>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</form>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="container" style="margin-top: 4%;">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>{{data.sname}}:Profile</h3>
+    </div>
+    <div class="col-md-3">
+      <div ngbDropdown class="dropdown float-right">
+        <button class="nav-link dropdown-toggle" ngbDropdownToggle>
+          Actions
+        </button>
+        <div ngbDropdownMenu class="dropdown-menu">
+          <a class="dropdown-item" href="#">LogOut</a>
+          <a class="dropdown-item" href="#">Settings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="card">
+  <div class="nav-tabs-navigation">
+    <div class="nav-tabs-wrapper">
+      <ngb-tabset [justify]="'center'" class="">
+        <ngb-tab>
+          <ng-template ngbTabTitle>
+           General
+          </ng-template>
+          <ng-template ngbTabContent>
+            <div class="row">
+              <div class="col-md-4">
+                <img src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" width="400" height="400" alt="">
+              </div>
+              <div class="col-md-8">
+                <div ><h5>Contact Information</h5></div>
+                <div>
+                <strong class="mr-5">E-mail:</strong>{{data.name}}
+                </div>
+
+                <!--<p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>-->
+                <div class="mt-5"><h5>General Information</h5></div>
+                <div>
+                  <strong class="mr-5">name:</strong>{{data.name}}
+                </div>
+                <div>
+                  <strong class="mr-5">name:</strong>{{data.name}}
+                </div>
+                <div>
+                  <strong class="mr-5">name:</strong>{{data.name}}
+                </div>
+                <div>
+                  <strong class="mr-5">name:</strong>{{data.name}}
+                </div>
+                <!--<p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>-->
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab>
+          <ng-template ngbTabTitle>
+            Test
+          </ng-template>
+          <ng-template ngbTabContent>
+            <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
+  </div>
+</div>
+</div>

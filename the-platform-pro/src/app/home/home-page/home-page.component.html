@@ -4,35 +4,109 @@
       <div class="col-md-7" style="margin-top: 6%;">
         <img src="../../../assets/The-Platform-Home-Main.png" width="700" height="575" alt="finance-photo">
       </div>
-      <div class="col-md-5" style="margin-top: 14%;">
+      <div class="col-md-5" style="margin-top: 8%;">
         <h4>Welcome to,</h4>
         <h1 class="">The Healthcare Platform</h1>
         <h4>We are saving lives.</h4>
         <p>Your body has a lot to tell you, now you can finally start listening...
           Estimating the health condition individually with early identification of high risk.</p>
-        <div><a routerLink="/apply" class="heading-font"><h4 class="heading-font">CHECK YOUR HEALTH NOW <i
-          class="fas fa fa-chevron-circle-right"></i></h4></a></div>
-        <div><a routerLink="../findDoctor" class="heading-font"><h4 class="heading-font">CHECK NEAR BY DOCTOR NOW <i
-          class="fas fa fa-chevron-circle-right"></i></h4></a></div>
-        <div><a routerLink="../findHospital" class="heading-font"><h4 class="heading-font">CHECK NEAR BY HOSPITAL NOW <i
-          class="fas fa fa-chevron-circle-right"></i></h4></a></div>
+        <!--<div><a routerLink="/apply" class="heading-font"><h4 class="heading-font">CHECK YOUR HEALTH NOW <i-->
+        <!--class="fas fa fa-chevron-circle-right"></i></h4></a></div>-->
+        <!--<div><a routerLink="../findDoctor" class="heading-font"><h4 class="heading-font">CHECK NEAR BY DOCTOR NOW <i-->
+        <!--class="fas fa fa-chevron-circle-right"></i></h4></a></div>-->
+        <!--<div><a routerLink="../findHospital" class="heading-font"><h4 class="heading-font">CHECK NEAR BY HOSPITAL NOW <i-->
+        <!--class="fas fa fa-chevron-circle-right"></i></h4></a></div>-->
+        <div class="row">
+          <div class="col-md-6 card-margine">
+            <a class="card card-signup btn-platform  text-center text-white" routerLink="/apply">
+              <!--<div class="card-body">-->
+              <!--<div class="text-center text-white">-->
+              <div style="font-size: 2em;">
+              <i class="fa fa-stethoscope " aria-hidden="true"></i>
+              </div>
+              <h4 class=" font-weight-bold">CHECK HEALTH</h4>
+              <!--</div>-->
+              <!--</div>-->
+            </a>
+          </div>
+          <div class="col-md-6 card-margine">
+            <a class="card card-signup btn-platform  text-center text-white" routerLink="../findDoctor">
+              <div style="font-size: 2em;">
+              <i class="fa fa-user-md" aria-hidden="true"></i>
+              </div>
+              <h4 class="text-white font-weight-bold">FIND DOCTOR
+              </h4>
+            </a>
+          </div>
+          <div class="col-md-6 card-margine">
+            <a class="card card-signup btn-platform  text-center text-white" routerLink="../findHospital">
+              <div style="font-size: 2em;">
+              <i class="fa fa-hospital-o" aria-hidden="true"></i>
+              </div>
+              <h4 class="text-white font-weight-bold">FIND HOSPITAL</h4>
+            </a>
+          </div>
+          <div class="col-md-6 card-margine">
+            <a class="card card-signup btn-platform  text-center text-white">
+              <div style="font-size: 2em;">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              </div>
+              <h4 class="text-white font-weight-bold">APPOINTMENT
+              </h4>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
   <section class="platform-unique">
     <div class="row">
       <div class="col-lg-6">
-          <img class="image-human" src="../../../assets/The-Platform-human-image (1).png" alt="Card image cap">
+        <img class="image-human" src="../../../assets/The-Platform-human-image (1).png" alt="Card image cap">
       </div>
-      <div class="col-lg-6 saving-lives" >
+      <div class="col-lg-6 saving-lives">
         <h2 class="heading-font">AWESOME FEATURES</h2>
         <p>We help you to visualize your Lab Reports with the help<br> of analytics, charts and statistics,
-          Once your  data is uploaded,<br>  your results will provide you with personalized  recommendations <br>
+          Once your data is uploaded,<br> your results will provide you with personalized recommendations <br>
           As per analysis on User lab data.</p>
         <h4 class="heading-font"><i class="fas fa fa-chevron-circle-right mr-2"></i> VERIFIED ALGORITHM</h4>
         <h4 class="heading-font"><i class="fas fa fa-chevron-circle-right mr-2"></i> EFFECTIVE DATASETS</h4>
-    <h4 class="heading-font"><i class="fas fa fa-chevron-circle-right mr-2"></i> SUPER-FRIENDLY SUPPORT TEAM</h4>
+        <h4 class="heading-font"><i class="fas fa fa-chevron-circle-right mr-2"></i> SUPER-FRIENDLY SUPPORT TEAM</h4>
+      </div>
     </div>
+  </section>
+  <section class="mt-5">
+    <div class="row text-center">
+      <div class="col-md-3">
+        <h2 countUp endVal="500"></h2>
+<h4>Medical Specialties and Sub-Specialties</h4>
+        <!--<p>service</p>-->
+        <button class="btn btn-platform">service</button>
+        <!--<h3>CountUp.js - Angular Demo</h3>-->
+        <!--<h1 countUp [endVal]="pickANumber" [reanimateOnClick]="true">0</h1>-->
+        <!--<label>Change the end value:</label>-->
+        <!--<input type="text" [(ngModel)]="pickANumber" style="display:block">-->
+      </div>
+      <div class="col-md-3">
+        <h2 countUp endVal="500"></h2>
+        <h4>Million Awarded in Research Grants</h4>
+        <!--<p>service</p>-->
+        <button class="btn btn-platform">service</button>
+
+      </div>
+      <div class="col-md-3">
+        <h2 countUp endVal="500"></h2>
+        <h4>Feinberg School of Medicine Ranked 20th in the US</h4>
+        <!--<p>(by US News & World Report)</p>-->
+        <button class="btn btn-platform">service</button>
+      </div>
+      <div class="col-md-3">
+        <h2 countUp endVal="500"></h2>
+        <h4 style="max-height: 14vh!important;">Medical Specialties and Sub-Specialties</h4>
+        <!--<p>service</p>-->
+        <button class="btn btn-platform">service</button>
+
+      </div>
     </div>
   </section>
   <section class="platform-second container-fluid">
