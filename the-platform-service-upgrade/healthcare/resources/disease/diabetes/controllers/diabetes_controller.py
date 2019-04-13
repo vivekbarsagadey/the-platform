@@ -5,7 +5,7 @@ from healthcare.resources.disease.diabetes.controllers.input_handler import User
 from healthcare.resources.disease.diabetes.controllers.user_input import user_fields
 from healthcare.resources.disease.diabetes.model.models import AllModels
 
-prediction = api.namespace('api/diabetes/all', description='Operations related to diabetes')
+prediction = api.namespace('api/diabetes/all', description='Operations related to Diabetes GET Method train the Model')
 
 
 @prediction.route('/', endpoint='/all')
@@ -23,6 +23,5 @@ class DiabetesController(Resource):
     def post(self):
         json_data = request.get_json(force=True)
         user = User(json_data)
-        print("user is ", user)
-        userDataFrame = user.getframe()
-        return AllModels().predict(userDataFrame)
+        userdata = user.getframe
+        return AllModels().predict(userdata)
