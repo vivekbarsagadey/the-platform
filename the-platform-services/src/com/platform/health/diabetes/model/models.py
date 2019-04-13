@@ -10,9 +10,6 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
-from collections import ChainMap
-from bson.json_util import dumps
-import json
 from com.platform.health.diabetes.domain.computation import Computation
 from com.platform.health.diabetes.services.data_handler import DiabetesDataSet
 from com.platform.health.diabetes.services.store_handler import StoreHandle

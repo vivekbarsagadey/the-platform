@@ -1,8 +1,7 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import os
-import codecs, json
+import json
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score

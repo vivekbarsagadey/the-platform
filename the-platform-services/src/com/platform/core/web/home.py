@@ -1,4 +1,4 @@
-from flask_restful import Resource, Api
+from flask_restplus import Resource, Api
 from flask import render_template,make_response
 class HomeController(Resource):
     def get(self):

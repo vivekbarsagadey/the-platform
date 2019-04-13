@@ -1,0 +1,1 @@
+from healthcare.resources.disease.diabetes.controllers.diabetes_controller import DiabetesController
