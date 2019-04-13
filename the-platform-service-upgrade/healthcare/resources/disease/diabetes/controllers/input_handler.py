@@ -15,7 +15,7 @@ class User:
         self.age = org['age']
         self.outcome = 0
 
-    def getFrame(self):
+    def getframe(self):
         return pd.DataFrame(
             {'Pregnancies': self.pregnancy, 'Glucose': self.glucose, 'BloodPressure': self.bloodpressure,
              'SkinThickness': self.skinThickness,

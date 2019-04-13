@@ -10,16 +10,20 @@ feature_names = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'In
                  'DiabetesPedigreeFunction', 'Age']
 
 
-class DiabetesDataSet():
+class DiabetesDataSet:
 
-    def getDataSet(self):
+    @property
+    def getdataset(self):
         return df
 
+    @property
     def getx(self):
-        return self.getDataSet()[feature_names]
+        return self.getdataset[feature_names]
 
-    def getXByDataFrame(self, df):
+    @staticmethod
+    def datasetvalue(df):
         return df[feature_names]
 
+    @property
     def gety(self):
-        return self.getDataSet().Outcome
+        return self.getdataset.Outcome
