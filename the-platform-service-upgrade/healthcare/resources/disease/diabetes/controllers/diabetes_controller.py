@@ -1,7 +1,7 @@
 from flask import request
 from flask_restplus import Resource
 from healthcare import api
-from healthcare.resources.disease.diabetes.services.input_handler import User
+from healthcare.resources.disease.diabetes.controllers.input_handler import User
 from healthcare.resources.disease.diabetes.controllers.user_input import user_fields
 from healthcare.resources.disease.diabetes.model.models import AllModels
 
@@ -17,12 +17,12 @@ class DiabetesController(Resource):
 
     @api.expect(user_fields, validate=False)
     @api.doc(responses={
-        200: 'Recommendation Given',
+        200: 'Prediction Given',
         400: 'Validation Error'
     })
     def post(self):
         json_data = request.get_json(force=True)
         user = User(json_data)
         print("user is ", user)
-        userDataFrame = user.getFrame()
+        userDataFrame = user.getframe()
         return AllModels().predict(userDataFrame)

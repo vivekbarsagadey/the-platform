@@ -3,7 +3,7 @@ import pickle
 from pathlib import Path
 
 BASE_FOLDER = os.path.abspath(os.path.dirname(__name__))
-NEXT_PATH = "/healthcare/resources/disease/diabetes/data/"
+NEXT_PATH = "/healthcare/resources/disease/diabetes/model/save/"
 FULL_PATH = BASE_FOLDER + NEXT_PATH
 file_ext = '.sav'
 
