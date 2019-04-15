@@ -12,3 +12,4 @@ api = Api(app, title='the-platform', description='Created by WhizIT', default='t
           validate=True)
 
 from healthcare.resources import home
+
