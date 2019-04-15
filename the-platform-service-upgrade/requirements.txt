@@ -7,4 +7,4 @@ python-dotenv==0.10.1
 Flask-Cors==3.0.7
 keras==2.2.4
 h5py==2.9.0
-tensorflow==1.13.1
+Theano==1.0.4
