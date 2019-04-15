@@ -17,7 +17,7 @@ models = [('KNeighborsClassifier', KNeighborsClassifier()), ('SVC', SVC()),
           ('GradientBoostingClassifier', GradientBoostingClassifier())]
 
 
-class AllModels():
+class AllModels:
 
     def __init__(self):
         self.dataDataSet = DiabetesDataSet()
