@@ -1,5 +1,6 @@
 from healthcare.resources.disease.diabetes.dataset.data_handler import DiabetesDataSet
 from healthcare.resources.disease.diabetes.model.net_handler import nethandler
+from healthcare.resources.disease.diabetes.model.computation import Computation
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from keras import Sequential
@@ -35,8 +36,16 @@ class neuralNet:
 
 
     def netpredict(self, x={}):
-       get_model = nethandler().loadnet()
-       get_model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
-       y_pred = get_model.predict(self.dataset.datasetvalue(x))
-       print(y_pred)
-       return y_pred
+        computationList = []
+        get_model = nethandler().loadnet()
+        get_model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+        y_pred = get_model.predict(self.dataset.datasetvalue(x))
+        print(y_pred)
+        if y_pred >= 0.5:
+            y_pred = 1
+            computationList.append(Computation('Neural net', pred=str(y_pred)).__dict__)
+            return computationList
+        else:
+            y_pred = 0
+            computationList.append(Computation('Neural net', pred=str(y_pred)).__dict__)
+            return computationList

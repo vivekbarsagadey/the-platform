@@ -27,5 +27,6 @@ class DiabetesController(Resource):
         user = User(json_data)
         userdata = user.getframe
         out = neuralNet().netpredict(userdata)
-        print(out)
-        return AllModels().predict(userdata)
+        temp = AllModels().predict(userdata)
+        result = temp + out
+        return result
