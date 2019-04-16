@@ -5,7 +5,7 @@ from flask_restplus import Api
 app = Flask(__name__)
 CORS(app)
 
-app.config['SWAGGER_UI_DOC_EXPANSION'] = 'List'
+app.config.from_envvar('APP_SETTINGS')
 
 api = Api(app, title='the-platform', description='Created by WhizIT', default='the-platform',
           default_label='Controllers',
