@@ -1,4 +1,4 @@
-from keras.models import model_from_json
+from tensorflow.python import keras
 import os
 
 BASE_FOLDER = os.path.abspath(os.path.dirname(__name__))
@@ -15,15 +15,11 @@ class nethandler:
         with open(FULL_PATH+"model.json", "w") as json_file:
             json_file.write(model_json)
         # serialize weights to HDF5
-        model.save_weights(FULL_PATH + "model.h5")
+        model.save(FULL_PATH + "model.h5")
 
     def loadnet(self):
-        json_file = open(FULL_PATH + 'model.json', 'r')
-        loaded_model_json = json_file.read()
-        json_file.close()
-        loaded_model = model_from_json(loaded_model_json)
-        # load weights into new model
-        loaded_model.load_weights(FULL_PATH + "model.h5")
+
+        loaded_model = keras.models.load_model(FULL_PATH + "model.h5")
         print("Loaded model from disk")
 
         return loaded_model
